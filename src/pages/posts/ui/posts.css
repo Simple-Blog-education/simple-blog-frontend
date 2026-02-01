@@ -3,10 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: max-content;
+    width: min-content;
     gap: 1rem;
 }
 input {
-    font-size: 1rem;
+    font-size: var(--font-size-ui);
     width: clamp(200px, 50%, 600px);
 }

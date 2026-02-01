@@ -1,0 +1,9 @@
+footer {
+    background-color: var(--light-text);
+}
+
+.footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--padding-m);
+}

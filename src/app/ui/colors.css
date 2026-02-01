@@ -1,0 +1,34 @@
+:root {
+  color-scheme: light;
+  --light-bg: #fcfbfb;
+  --light-text: #2b2e39;
+  --light-accent: #42aad9;
+  --light-accent-hover: #3482a5;
+  --light-border: #d6d6d6;
+}
+
+a {
+    color: var(--light-bg);
+    text-decoration: none;
+}
+
+a .display {
+    color: var(--light-text);
+}
+
+a:hover, a:hover .display {
+    text-decoration: underline;
+}
+
+body {
+        color: var(--light-text);
+        background-color: var(--light-bg);
+    }
+button, select {
+    color: var(--light-bg);
+    background-color: var(--light-accent);
+}
+
+@media (prefers-color-scheme: light) {
+    
+}

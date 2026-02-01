@@ -15,7 +15,7 @@ export function Posts() {
             <h1>Все посты</h1>
             {posts === undefined || posts.length === 0 ? <p>Loading...</p> :
             <section class="posts-section">
-                <input placeholder="Search..."/>
+                {/* <input placeholder="Search..."/> */}
                 {posts.map((post: Post) => <PostItem post={post}></PostItem>)}
             </section>}
         </>

@@ -1,0 +1,64 @@
+:root {
+    --font-family-display: 'Source Code Pro', monospace;
+    --font-family-text: 'Noto Serif', serif;
+    --line-height-display: 1.3;
+    --line-height-text: 1.5;
+    --font-weight-default: 400;
+    --font-weight-bold: 600;
+    --font-size-text: 1rem;
+    --font-size-display: 2.45rem;
+    --font-size-h1-text: 2.45rem;
+    --font-size-h1-display: 1.25rem;
+    --font-size-h2: 1,95rem;
+    --font-size-h3: 1.55rem;
+    --font-size-h4: 1.25rem;
+    --font-size-ui: 0.875rem;
+    --font-size-code-inline: 0.9rem;
+}
+
+#app {
+    font-family: var(--font-family-display);
+    line-height: var(--line-height-display);
+    font-weight: var(--font-weight-default);
+}
+
+h1 {
+    font-size: var(--font-size-display);
+}
+
+h1.display {
+    font-size: var(--font-size-h1-display);
+    line-height: var(--line-height-display);
+}
+
+h1.text {
+    font-size: var(--font-size-h1-text);
+    font-family: var(--text-font);
+    line-height: var(--line-height-text);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+p {
+    font-size: var(--font-size-text);
+}
+
+h1.display, h2, h3, h4, p {
+    font-family: var(--text-font);
+    line-height: var(--font-family-text);
+}
+
+button, select {
+    font-size: var(--font-size-ui);
+}
+
