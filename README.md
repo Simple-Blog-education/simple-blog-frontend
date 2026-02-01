@@ -2,7 +2,5 @@
 
 ## Stack
 
-React
+Preact
 + TypeScript
-+ Router (soon)
-+ SSR (soon)
