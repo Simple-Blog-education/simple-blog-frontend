@@ -1,24 +1,17 @@
 import './ui/app.css'
 import {About} from "@/pages/about";
 import {ErrorBoundary, LocationProvider, Route, Router} from 'preact-iso';
-import {NotFound} from "./routes/not_found.tsx";
 import {Posts} from "@/pages/posts";
-import {PostDetails} from "@/pages/post_details/ui/post_details.tsx";
-import { Footer } from '@/shared/ui/footer/index.ts';
+import {PostDetails} from "@/pages/post_details";
+import { Footer } from '@/shared/ui/footer';
+import { Header } from '@/shared/ui/header';
+import { NotFound } from './routes';
 
 export function Index() {
     return (
         <LocationProvider>
             <ErrorBoundary>
-                {/* <header>
-                    <nav>
-                        <a href={`/`}>Все статьи</a>
-                        {true ? <>
-                            <a href={`/profile/${'user_id'}`}>Профиль</a>
-                            <a onClick={() => console.log("Выйти")}>Выйти</a>
-                        </> : ''}
-                    </nav>
-                </header> */}
+                <Header/>
                 <main>
                 <Router>
                     <Route path="/" component={Posts}></Route>

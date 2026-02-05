@@ -1,0 +1,5 @@
+button, select {
+    padding: var(--padding-s);
+    border-radius: var(--padding-xs);
+    cursor: pointer;
+}

@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-text);
+    color: var(--light-bg);
+    padding: var(--padding-l);
+}
+header > a {
+    height: 48px;
+}
+
+nav {
+    display: flex;
+    gap: var(--padding-m);
+}
