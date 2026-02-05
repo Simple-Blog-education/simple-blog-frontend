@@ -27,6 +27,12 @@ body {
 button, select {
     color: var(--light-bg);
     background-color: var(--light-accent);
+        border: 1px solid var(--light-accent);
+}
+
+button:hover, select:hover {
+    background-color: var(--light-accent-hover);
+    border: 1px solid var(--light-accent-hover);
 }
 
 @media (prefers-color-scheme: light) {

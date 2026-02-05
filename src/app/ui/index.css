@@ -3,6 +3,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --padding-xs: 4px;
   --padding-s: 8px;
   --padding-m: 16px;
   --padding-l: 24px;
@@ -19,4 +20,8 @@ body {
   place-items: center;
   min-width: 375px;
   min-height: 100vh;
+}
+
+* {
+  margin: 0;
 }

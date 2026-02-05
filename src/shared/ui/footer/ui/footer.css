@@ -1,9 +1,17 @@
 footer {
     background-color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--padding-m);
 }
 
-.footer__socials {
+.footer__socials, .footer__navigation {
     display: flex;
     justify-content: center;
     gap: var(--padding-m);
+}
+
+.footer__author {
+    color: var(--light-bg);
 }

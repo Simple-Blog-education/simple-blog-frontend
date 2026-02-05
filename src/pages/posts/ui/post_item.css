@@ -4,6 +4,6 @@
     align-items: center;
     justify-content: center;
     border: 1px solid gray;
-    padding: 0.25rem 2rem;
+    padding: var(--padding-l);
     border-radius: 0.25rem;
 }

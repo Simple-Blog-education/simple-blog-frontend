@@ -15,6 +15,7 @@ export function Footer() {
                 <a href="/about">О проекте</a>
                 <a href="/">Все посты</a>
             </nav>
+            <p class="footer__author">icy0o, 2026</p>
         </footer>
     </>
 }
