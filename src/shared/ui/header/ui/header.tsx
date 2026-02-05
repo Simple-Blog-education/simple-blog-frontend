@@ -5,7 +5,7 @@ export function Header() {
     let authorized = true;
     return <>
         <header>
-            <a href="/"><img src="" alt="logo" className="logo" /></a>
+            <a href="/"><img src="/favicon.svg" height="48" alt="logo" className="logo"/></a>
             <nav>
                 {authorized ? <button onClick={() => {location.route("/auth")}}>Авторизация</button> : 
                 <>

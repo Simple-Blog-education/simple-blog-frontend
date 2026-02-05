@@ -4,6 +4,7 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: var(--padding-m);
+    padding: var(--padding-m);
 }
 
 .footer__socials, .footer__navigation {
@@ -14,4 +15,8 @@ footer {
 
 .footer__author {
     color: var(--light-bg);
+}
+
+footer img {
+    height: 48px;
 }
