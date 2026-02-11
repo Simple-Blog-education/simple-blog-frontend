@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.31.83:8000/api/v1";
+const BASE_URL = "http://localhost:8000/api/v1";
 class APIClient {
     baseURL: string;
     defaultHeaders?: any;

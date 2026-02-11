@@ -11,12 +11,13 @@ export function PostDetails() {
     useEffect(() => {
         getPostById(route.params.id as UUIDv4).then((post) => setPost(post))
     }, [])
+    const postDate = `${post.create_date?.toLocaleString() ?? ''}` + (post.create_date?.getTime() == post.edit_date?.getTime() ? '' : ` (изменено: ${post.edit_date?.toLocaleString() ?? ''})`)
     return (
         <main class={`post-details`}>
             <h1>{post.header}</h1>
-            <p>{post.text?.repeat(20) ?? ''}</p>
-            <p>{post.create_date?.toString() ?? ''}</p>
-            <p>{post.edit_date?.toString() ?? ''}</p>
+            <p>{post.text?.toString() ?? ''}</p>
+            <p>Дата публикации: {postDate} </p>
+            <p>{}</p>
         </main>
     )
 }
