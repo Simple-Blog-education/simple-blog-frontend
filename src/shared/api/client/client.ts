@@ -11,7 +11,7 @@ class APIClient {
             `${BASE_URL}/${path}`,
             {
                 method: "GET",
-                headers: headers ?? this.defaultHeaders
+                headers: {...headers, ...this.defaultHeaders }
             }
         )
         if(!response.ok) throw new Error(response.statusText);
