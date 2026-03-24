@@ -6,6 +6,7 @@ import {PostDetails} from "@/pages/post_details";
 import { Footer } from '@/shared/ui/footer';
 import { Header } from '@/shared/ui/header';
 import { NotFound } from './routes';
+import { Auth } from '@/pages/auth/ui/auth_container';
 
 export function Index() {
     return (
@@ -19,6 +20,7 @@ export function Index() {
                     <Route path="/posts/:id" component={PostDetails} />
                     <Route path="/about" component={About}></Route>
                     <Route component={NotFound} default />
+                    <Route path='/auth' component={Auth}/>
                 </Router>
                 </main>
                 <Footer/>
