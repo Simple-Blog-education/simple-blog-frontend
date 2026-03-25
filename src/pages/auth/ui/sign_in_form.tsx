@@ -11,11 +11,15 @@ export function SignInForm({changeCallback}:{changeCallback: ChangeAuthPageFunct
     const [showPassword, setShowPassword] = useState(false);
 
     return (<form onSubmit={submit}>
-        <label htmlFor={"username"}>Имя пользователя</label>
-        <input type="text" name={"username"} placeholder="Имя пользователя"/>
-        <label htmlFor="password">Пароль</label>
-        <input type={showPassword ? "text" : "password"} name={"password"} placeholder="Пароль"/>
-        <a class={"display"} onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Показать' : 'Скрыть'} пароль</a>
+        <div className="input-container">
+            <label for={"username"}>Имя пользователя</label>
+            <input type="text" id={"username"} name={"username"} placeholder="Имя пользователя"/>
+        </div>
+        <div className="input-container">
+            <label for="password">Пароль</label>
+            <input type={showPassword ? "text" : "password"} id={"password"} name={"password"} placeholder="Пароль"/>
+        </div>
+        <a class={"display"} onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Скрыть' : 'Показать'} пароль</a>
         <button type={"submit"}>Войти</button>
         <p>Нет аккаунта? <a class="display" onClick={changeCallback}>Зарегистрироваться</a></p>
     </form>);

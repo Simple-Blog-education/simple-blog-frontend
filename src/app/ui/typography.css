@@ -58,8 +58,9 @@ h1.display, h2, h3, h4, p {
     line-height: var(--font-family-text);
 }
 
-button, select, a, p.display {
+button, select, a, p.display, label {
     font-family: var(--font-family-display);
     font-size: var(--font-size-ui);
+    font-weight: 600;
 }
 

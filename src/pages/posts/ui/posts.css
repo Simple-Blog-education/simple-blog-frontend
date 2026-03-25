@@ -6,7 +6,3 @@
     width: clamp(325px, 25%, 900px);
     gap: 1rem;
 }
-input {
-    font-size: var(--font-size-ui);
-    width: clamp(200px, 50%, 600px);
-}
