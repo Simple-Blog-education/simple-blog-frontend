@@ -15,10 +15,10 @@ export function Auth() {
     }, [currentPage])
     return  (
         <section className={"auth"}>
-        <h1>{currentPage == "signin" ? "Вход" : "Регистрация"}</h1>
-            {currentPage == "signin" ? 
-        <SignInForm changeCallback={changeToSignUp}></SignInForm> : 
-        <SignUpForm changeCallback={changeToSignIn}></SignUpForm>}
+            <h1>{currentPage == "signin" ? "Вход" : "Регистрация"}</h1>
+                {currentPage == "signin" ? 
+            <SignInForm changeCallback={changeToSignUp}></SignInForm> : 
+            <SignUpForm changeCallback={changeToSignIn}></SignUpForm>}
         </section>
         
     );

@@ -1,7 +1,7 @@
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: var(--padding-m);
     width: clamp(33ch, 75%, 66ch);
 }
@@ -9,7 +9,7 @@ form {
 .auth {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: var(--padding-m);
     margin: var(--padding-l) 0px;
 }

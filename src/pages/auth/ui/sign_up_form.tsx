@@ -13,7 +13,7 @@ export function SignUpForm({changeCallback}:{changeCallback: ChangeAuthPageFunct
     return (<form onSubmit={submit}>
         <div className="input-container">
             <label for={"username"}>Имя пользователя</label>
-            <input type="text" placeholder={"Имя пользователя"} name={"username"} id={"username"}/>
+            <input type="text" placeholder={"Имя пользователя уникально"} name={"username"} id={"username"}/>
         </div>
         <div className="input-container">
             <label for={"email"}>Эл. почта</label>
@@ -29,6 +29,6 @@ export function SignUpForm({changeCallback}:{changeCallback: ChangeAuthPageFunct
         </div>
         <a class={"display"} onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Скрыть': 'Показать'} пароль</a>
         <button type={"submit"}>Зарегистрироваться</button>
-        <p>Есть аккаунт? <a class={"display"} onClick={changeCallback}>Войти</a></p>
+        <p class="display">Есть аккаунт? <a class={"display"} onClick={changeCallback}>Войти</a></p>
     </form>);
 }
