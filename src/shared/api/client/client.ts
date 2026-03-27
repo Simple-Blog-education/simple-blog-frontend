@@ -54,4 +54,6 @@ class APIClient {
     }
 }
 
-export const API = new APIClient(BASE_URL);
+export const API = new APIClient(BASE_URL, {
+    'Content-Type': 'application/json'
+});

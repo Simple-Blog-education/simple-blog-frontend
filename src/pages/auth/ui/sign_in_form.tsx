@@ -1,9 +1,14 @@
 import { useState } from "preact/hooks";
 import type { ChangeAuthPageFunction } from "./auth_container";
+import { signIn } from "../api/auth";
 
-function submit(e: Event) {
+function submit(e: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) {
     e.preventDefault()
-    // make call to api
+    const formData = new FormData(e.currentTarget);
+    signIn({
+        username: formData.get("username")!.toString(),
+        password: formData.get("password")!.toString()
+    });
 }
 
 export function SignInForm({changeCallback}:{changeCallback: ChangeAuthPageFunction}) {
