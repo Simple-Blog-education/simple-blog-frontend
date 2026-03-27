@@ -15,7 +15,7 @@ export function SignInForm({changeCallback}:{changeCallback: ChangeAuthPageFunct
 
     const [showPassword, setShowPassword] = useState(false);
 
-    return (<form onSubmit={submit}>
+    return (<form onSubmit={submit} method="post">
         <div className="input-container">
             <label for={"username"}>Имя пользователя</label>
             <input type="text" id={"username"} name={"username"}/>
