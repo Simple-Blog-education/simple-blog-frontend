@@ -9,10 +9,10 @@ export function Auth() {
     const [currentPage, setCurrentPage] = useState("signup")
     const changeToSignIn: ChangeAuthPageFunction = useCallback(() => {
         setCurrentPage("signin")
-    }, [currentPage])
+    }, [])
     const changeToSignUp: ChangeAuthPageFunction = useCallback(() => {
         setCurrentPage("signup")
-    }, [currentPage])
+    }, [])
     return  (
         <section className={"auth"}>
             <h1>{currentPage == "signin" ? "Вход" : "Регистрация"}</h1>
