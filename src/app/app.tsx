@@ -1,29 +1,32 @@
-import './ui/app.css'
+import './styles/app.css'
 import {About} from "@/pages/about";
 import {ErrorBoundary, LocationProvider, Route, Router} from 'preact-iso';
 import {Posts} from "@/pages/posts";
 import {PostDetails} from "@/pages/post_details";
-import { Footer } from '@/shared/ui/footer';
-import { Header } from '@/shared/ui/header';
 import { NotFound } from './routes';
 import { Auth } from '@/pages/auth/ui/auth_container';
+import { BaseLayout } from './layouts/BaseLayout';
 
-export function Index() {
+function wrapWithLayout(Component: any) {
+    return (props: any) => (
+        <BaseLayout>
+            <Component {...props}/>
+        </BaseLayout>
+    )
+}
+
+export function App() {
     return (
         <LocationProvider>
             <ErrorBoundary>
-                <Header/>
-                <main>
                 <Router>
-                    <Route path="/" component={Posts}></Route>
+                    <Route path="/" component={wrapWithLayout(Posts)}></Route>
                     {/*<Route path="/profile/:id" component={}></Route>*/}
-                    <Route path="/posts/:id" component={PostDetails} />
-                    <Route path="/about" component={About}></Route>
+                    <Route path="/posts/:id" component={wrapWithLayout(PostDetails)} />
+                    <Route path="/about" component={wrapWithLayout(About)}></Route>
                     <Route component={NotFound} default />
-                    <Route path='/auth' component={Auth}/>
+                    <Route path='/auth' component={wrapWithLayout(Auth)}/>
                 </Router>
-                </main>
-                <Footer/>
             </ErrorBoundary>
         </LocationProvider>
   );

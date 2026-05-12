@@ -1,7 +1,7 @@
 import { currentUser, setUser } from "@/features/auth/model/auth.store"
 import { API } from "@/shared/api"
 import type { User } from "@/shared/models/user"
-import type { UUIDv4 } from "@/shared/models/uuid"
+import type { UUIDv4 } from "@/shared/lib/uuid"
 
 type AuthCredentials = {
     username: string,

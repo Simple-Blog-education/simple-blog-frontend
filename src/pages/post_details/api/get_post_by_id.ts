@@ -1,4 +1,4 @@
-import type {UUIDv4} from "@/shared/models/uuid.ts";
+import type {UUIDv4} from "@/shared/lib/uuid";
 import {API} from "@/shared/api";
 import type { Post } from "@/shared/models/post";
 

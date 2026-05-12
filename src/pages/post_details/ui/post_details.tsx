@@ -2,7 +2,7 @@ import {useEffect, useState} from "preact/hooks";
 import type {Post} from "@/shared/models/post.ts";
 import {getPostById} from "@/pages/post_details/api/get_post_by_id.ts";
 import {useRoute} from "preact-iso";
-import type {UUIDv4} from "@/shared/models/uuid.ts";
+import type {UUIDv4} from "@/shared/lib/uuid";
 import './post_details.css'
 
 export function PostDetails() {
