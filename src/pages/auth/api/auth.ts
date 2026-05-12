@@ -1,4 +1,7 @@
+import { currentUser, setUser } from "@/features/auth/model/auth.store"
 import { API } from "@/shared/api"
+import type { User } from "@/shared/models/user"
+import type { UUIDv4 } from "@/shared/models/uuid"
 
 type AuthCredentials = {
     username: string,
@@ -11,9 +14,17 @@ type SignUpData = {
     password: string
 }
 
+type LoginData = {
+    user_id: UUIDv4;
+    token: string;
+}
+
 export async function signIn(data: AuthCredentials) {
-    let authToken: string = await API.post('auth/login', data);
-    API.defaultHeaders["Authorization"] = `Bearer: ${authToken}`;
+    let loginData: LoginData = await API.post('auth/login', data);
+    API.defaultHeaders["Authorization"] = `Bearer: ${loginData.token}`;
+    localStorage.setItem('token', loginData.token);
+    let user: User = await API.get(`users/${loginData.user_id}`);
+    setUser(user);
     return true;
 }
 
