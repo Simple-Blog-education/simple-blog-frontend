@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 375px;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: var(--font-display);
+    line-height: var(--line-height-display);
+    font-weight: var(--font-weight-default);
+}
+
+a {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    color: var(--color-bg);
+}
+a:hover {
+    text-decoration: underline;
+}
+
+a.display {
+    color: var(--color-text);
+}
