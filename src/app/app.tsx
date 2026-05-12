@@ -1,11 +1,11 @@
 import './styles/app.css'
-import {About} from "@/pages/about";
+import {About} from "@/pages/about_page/about";
 import {ErrorBoundary, LocationProvider, Route, Router} from 'preact-iso';
 import {Posts} from "@/pages/posts";
-import {PostDetails} from "@/pages/post_details";
+import {PostDetails} from "@/pages/post_view_page";
 import { NotFound } from './routes';
-import { Auth } from '@/pages/auth/ui/auth_container';
-import { BaseLayout } from './layouts/BaseLayout';
+import { Auth } from '@/pages/auth_page/ui/auth_container';
+import { BaseLayout } from './layouts/base_layout';
 
 function wrapWithLayout(Component: any) {
     return (props: any) => (
