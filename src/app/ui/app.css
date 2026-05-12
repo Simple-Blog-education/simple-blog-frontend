@@ -13,7 +13,7 @@
 
 main {
   flex-grow: 1;
-  padding: var(--padding-m);
+  padding: var(--padding-xl);
 }
 
 .card {

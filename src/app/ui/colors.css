@@ -12,11 +12,11 @@ a {
     text-decoration: none;
 }
 
-a .display {
+a.display {
     color: var(--light-text);
 }
 
-a:hover, a:hover .display {
+a:hover, a:hover.display {
     text-decoration: underline;
 }
 

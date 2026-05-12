@@ -52,14 +52,15 @@ h4 {
 p {
     font-size: var(--font-size-text);
 }
-
+/* TODO: какая-то дичь... */
 h1.display, h2, h3, h4, p {
     font-family: var(--text-font);
     line-height: var(--font-family-text);
 }
 
-button, select {
+button, select, a, p.display, label {
     font-family: var(--font-family-display);
     font-size: var(--font-size-ui);
+    font-weight: 600;
 }
 
