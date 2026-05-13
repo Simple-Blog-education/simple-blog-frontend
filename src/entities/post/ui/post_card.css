@@ -1,3 +1,10 @@
-.card {
-    padding: var(--padding-m);
+.post_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    border: 1px solid gray;
+    padding: var(--padding-l);
+    border-radius: 0.25rem;
+    gap: var(--padding-s);
 }

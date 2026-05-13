@@ -2,15 +2,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--light-text);
-    color: var(--light-bg);
-    padding: var(--padding-l);
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    padding: var(--space-l);
 }
-header > a {
+
+header>a {
     height: 48px;
 }
 
 nav {
     display: flex;
-    gap: var(--padding-m);
+    gap: var(--space-m);
 }
