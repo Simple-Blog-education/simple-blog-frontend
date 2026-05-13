@@ -1,8 +1,8 @@
 import { useState } from "preact/hooks";
 import type { ChangeAuthPageFunction } from "./auth_container";
-import { signUp } from "../api/auth";
+import { signUp } from "@/features/auth/api/auth.api";
 
-export function SignUpForm({changeCallback}:{changeCallback: ChangeAuthPageFunction}) {
+export function SignUpForm({ changeCallback }: { changeCallback: ChangeAuthPageFunction }) {
 
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -43,21 +43,21 @@ export function SignUpForm({changeCallback}:{changeCallback: ChangeAuthPageFunct
     return (<form onSubmit={handleSubmit} method="post">
         <div className="input-container">
             <label htmlFor="username">Имя пользователя</label>
-            <input type="text" placeholder="Имя пользователя уникально" name="username" id="username"/>
+            <input type="text" placeholder="Имя пользователя уникально" name="username" id="username" />
         </div>
         <div className="input-container">
             <label htmlFor="email">Эл. почта</label>
-            <input type="email" name="email" placeholder="example@mail.com" id="email"/>
+            <input type="email" name="email" placeholder="example@mail.com" id="email" />
         </div>
         <div className="input-container">
             <label for="password">Пароль</label>
-            <input type={showPassword ? "text" : "password"} name="password" id="password"/>
+            <input type={showPassword ? "text" : "password"} name="password" id="password" />
         </div>
         <div className="input-container">
             <label for="repeatPassword">Повторите пароль</label>
             <input type={showPassword ? "text" : "password"} name="repeatPassword" id="repeatPassword" />
         </div>
-        <a className="display" onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Скрыть': 'Показать'} пароль</a>
+        <a className="display" onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Скрыть' : 'Показать'} пароль</a>
         {error && <p className="error">{error}</p>}
         <button type="submit" disabled={loading}>{loading ? "Регистрация..." : "Зарегистрироваться"}</button>
         <p className="display">Есть аккаунт? <a className="display" onClick={changeCallback}>Войти</a></p>
