@@ -1,9 +1,0 @@
-button,
-select,
-a,
-p.display,
-label {
-    font-family: var(--font-family-display);
-    font-size: var(--font-size-ui);
-    font-weight: 600;
-}

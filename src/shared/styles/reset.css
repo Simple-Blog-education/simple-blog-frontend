@@ -18,17 +18,3 @@ body {
     line-height: var(--line-height-display);
     font-weight: var(--font-weight-default);
 }
-
-a {
-    cursor: pointer;
-    color: inherit;
-    text-decoration: none;
-    color: var(--color-bg);
-}
-a:hover {
-    text-decoration: underline;
-}
-
-a.display {
-    color: var(--color-text);
-}

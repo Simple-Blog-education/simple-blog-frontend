@@ -7,7 +7,7 @@ type TextTag = 'p' | 'span' | 'div';
 interface TextProps {
     variant?: TextVariant,
     as?: TextTag,
-    className: string,
+    className?: string,
     children: ComponentChildren
 }
 

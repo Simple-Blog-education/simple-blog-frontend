@@ -5,9 +5,19 @@ select {
     color: var(--light-bg);
     background-color: var(--light-accent);
     border: 1px solid var(--light-accent);
+    font-family: var(--font-display);
+    font-size: var(--text-ui);
+    font-weight: 600;
 }
 
 select:hover {
     background-color: var(--light-accent-hover);
     border: 1px solid var(--light-accent-hover);
+}
+
+
+label {
+    font-family: var(--font-display);
+    font-size: var(--text-ui);
+    font-weight: 600;
 }

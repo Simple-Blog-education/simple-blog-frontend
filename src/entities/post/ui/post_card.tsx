@@ -1,13 +1,50 @@
-import type { Post } from "@/entities/post";
+import { Heading } from '@/shared/ui';
+import type { Post } from '@/entities/post'
 import './post_card.css';
-import { Heading } from "@/shared/ui/heading/heading";
+import { truncateText } from '@/shared/lib/truncate_text';
+import { Text } from '@/shared/ui/text/text';
+
 export function PostCard({ post }: { post: Post }) {
-    let editDateString = post.create_date.getTime() == post.edit_date.getTime() ? '' : ` (обновлен: ${post.edit_date.toLocaleString()})`
+    // --- Логика дат ---
+    const isEdited = post.create_date.getTime() !== post.edit_date.getTime();
+    const publishedDate = post.create_date;
+    const editedDate = isEdited ? post.edit_date : null;
+
+    const previewText = truncateText(post.text, 100);
+
     return (
-        <div className="post_card">
-            <a class="display" href={`/posts/${post.id}/`}><Heading bold={true} level={2}>{post.header}</Heading></a>
-            <p>{post.text.substring(0, 99) + (post.text.length <= 100 ? "" : "...")}</p>
-            <p>Дата публикации: {post.edit_date.toLocaleString()}{editDateString}</p>
-        </div>
+        <article className="post_card">
+            <a
+                href={`/posts/${post.id}/`}
+                aria-label={`Читать пост "${post.header}"`}
+            >
+                <Heading level={2} bold={true}>{post.header}</Heading>
+            </a>
+
+            <Text variant='body'>{previewText}</Text>
+
+            <div className="time_bar">
+                <time dateTime={publishedDate.toISOString()}>
+                    {publishedDate.toLocaleDateString('ru-RU', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                    })}
+                </time>
+                {isEdited && (
+                    <>
+                        {' · '}
+                        <time dateTime={editedDate!.toISOString()}>
+                            обновлено{' '}
+                            {editedDate!.toLocaleDateString('ru-RU', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                        </time>
+                    </>
+                )}
+            </div>
+        </article>
     );
 }

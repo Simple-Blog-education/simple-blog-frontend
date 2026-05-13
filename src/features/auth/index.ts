@@ -1,1 +1,1 @@
-//TODO структура см. post
+export { currentUser, isAuthenticated, logout } from './model/auth.store'

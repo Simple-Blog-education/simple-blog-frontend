@@ -1,21 +1,21 @@
-import { useLocation } from "preact-iso";
 import "./header.css"
-import { isAuthenticated, logout } from "@/features/auth/model/auth.store";
+import { isAuthenticated, logout } from "@/features/auth";
+import { AppLink } from "@/shared/ui";
+import { Button } from "@/shared/ui";
 export function Header() {
-    const location = useLocation();
     let authorized = isAuthenticated.value;
     return <>
         <header>
-            <a href="/"><img src="/favicon.svg" height="48" alt="logo" className="logo"/></a>
+            <AppLink href="/" variant="header"><img src="/favicon.svg" height="48" alt="logo" className="logo" /></AppLink>
             <nav>
-                {!authorized ? <button onClick={() => {location.route("/auth")}}>Авторизация</button> : 
-                <>
-                    <a href="">Профиль</a>
-                    <a onClick={() => {
-                        logout();
-                        alert("Вы вышли из системы");
-                    }}>Выйти</a>
-                </>}
+                {!authorized ? <AppLink href="/auth" variant="header">Авторизация</AppLink> :
+                    <>
+                        <AppLink href="" variant="header">Профиль</AppLink>
+                        <Button onClick={() => {
+                            logout();
+                            alert("Вы вышли из системы");
+                        }}>Выйти</Button>
+                    </>}
             </nav>
         </header>
     </>

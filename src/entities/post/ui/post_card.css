@@ -4,7 +4,7 @@
     justify-content: center;
     text-align: justify;
     border: 1px solid gray;
-    padding: var(--padding-l);
+    padding: var(--space-l);
     border-radius: 0.25rem;
-    gap: var(--padding-s);
+    gap: var(--space-s);
 }

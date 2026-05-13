@@ -8,3 +8,14 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.error {
+    /* TODO: семантические цвета */
+    border-color: red;
+}
+
+label {
+    font-family: var(--font-display);
+    font-size: var(--text-ui);
+    font-weight: 600;
+}
