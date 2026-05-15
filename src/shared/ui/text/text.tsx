@@ -1,6 +1,6 @@
 import type { ComponentChildren } from "preact";
 
-type TextVariant = 'body' | 'ui' | 'code';
+type TextVariant = 'body' | 'ui' | 'code' | 'panel';
 type TextTag = 'p' | 'span' | 'div';
 
 
@@ -33,6 +33,13 @@ const variantStyles: Record<TextVariant, Record<string, string>> = {
         fontWeight: 'var(--font-weight-default)',
         color: 'var(--color-text)',
     },
+    panel: {
+        fontFamily: 'var(--font-display)',
+        fontSize: 'var(--text-ui)',
+        lineHeight: 'var(--line-height-display)',
+        fontWeight: 'var(--font-weight-bold)',
+        color: 'var(--color-text-panel)',
+    }
 };
 
 export function Text({
