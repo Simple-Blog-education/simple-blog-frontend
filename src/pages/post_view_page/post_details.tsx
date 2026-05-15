@@ -17,10 +17,10 @@ export function PostDetails() {
 
     if (loading.value) return <main class="post-details"><Text variant="ui">Загрузка...</Text></main>;
     if (error.value) return (
-        <main class="post-details">
+        <section class="post-details">
             <Text variant="body">{error.value}</Text>
             <Button onClick={() => postId && loadPost(postId)}>Повторить</Button>
-        </main>
+        </section>
     );
     if (!post.value) return <main class="post-details"><Text variant="ui">Пост не найден</Text></main>;
 
@@ -30,10 +30,10 @@ export function PostDetails() {
         edit_date ? new Date(edit_date) : undefined
     );
     return (
-        <main class="post-details">
+        <section class="post-details">
             <Heading level={1} variant="text">{header}</Heading>
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
             <Text variant="body">{text}</Text>
-        </main >
+        </section >
     )
 }

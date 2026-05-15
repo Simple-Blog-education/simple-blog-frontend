@@ -1,7 +1,7 @@
-import "./header.css"
 import { isAuthenticated, logout } from "@/features/auth";
 import { AppLink } from "@/shared/ui";
 import { Button } from "@/shared/ui";
+import "./header.css"
 export function Header() {
     let authorized = isAuthenticated.value;
     return <>

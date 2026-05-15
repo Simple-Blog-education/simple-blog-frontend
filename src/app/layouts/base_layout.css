@@ -2,3 +2,9 @@ main {
     flex-grow: 1;
     padding: var(--space-xl);
 }
+
+@media screen and (max-width: 720px) {
+    main {
+        padding: var(--space-m);
+    }
+}

@@ -17,6 +17,9 @@
     --space-l: 24px;
     --space-xl: 32px;
 
+    /* переход мобильная / пк версия */
+    --max-width-mobile: 720px;
+
     /* шрифты */
     --font-display: "Source Code Pro", monospace;
     --font-text: "Noto Serif", serif;

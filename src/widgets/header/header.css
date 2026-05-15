@@ -4,11 +4,13 @@ header {
     align-items: center;
     background-color: var(--color-panel);
     color: var(--color-bg);
-    padding: var(--space-l);
+    padding: var(--space-xl);
 }
 
-header>a {
-    height: 48px;
+@media screen and (max-width: 720px) {
+    header {
+        padding: var(--space-m);
+    }
 }
 
 nav {
