@@ -10,7 +10,7 @@ a:hover {
 }
 
 /* Варианты */
-a.header {
+a.panel {
     font-family: var(--font-display);
     font-size: var(--text-ui);
     font-weight: var(--weight-bold);
@@ -19,7 +19,7 @@ a.header {
     color: var(--color-text-header);
 }
 
-a.header.active {
+a.panel.active {
     background-color: var(--color-accent);
     color: #fff;
 }

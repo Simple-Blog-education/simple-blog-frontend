@@ -6,7 +6,7 @@
     font-size: var(--text-ui);
     font-weight: 600;
     line-height: 1.2;
-    transition: background-color 0.2s;
+    transition: background-color 0.1s;
 }
 
 .primary {
@@ -22,7 +22,9 @@
 
 .outline {
     border: 1px solid var(--color-accent);
-    color: var(--color-text);
+    color: var(--color-accent);
+    background-color: var(--color-bg);
+    padding: var(--space-xs);
 }
 
 .outline:hover {

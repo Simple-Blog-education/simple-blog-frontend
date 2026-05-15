@@ -1,4 +1,4 @@
 main {
     flex-grow: 1;
-    padding: var(--padding-xl);
+    padding: var(--space-xl);
 }

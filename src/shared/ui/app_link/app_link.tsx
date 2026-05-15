@@ -1,7 +1,7 @@
 import type { ComponentChildren } from "preact";
 import './app_link.css'
 
-type LinkStyle = 'default' | 'header' | 'page' | 'inline';
+type LinkStyle = 'default' | 'panel' | 'page' | 'inline';
 
 interface AppLinkProps {
     href: string;

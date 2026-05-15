@@ -3,24 +3,25 @@ import { API } from "@/shared/api"
 import type { User } from "@/entities/user"
 import type { UUIDv4 } from "@/shared/lib/uuid"
 
-type AuthCredentials = {
+export type AuthCredentials = {
     username: string,
     password: string
 }
 
-type SignUpData = {
+export type SignUpData = {
     username: string,
     email: string,
-    password: string
+    password: string,
+    repeatPassword?: string
 }
 
-type LoginData = {
+export type SignInData = {
     user_id: UUIDv4;
     token: string;
 }
 
 export async function signIn(data: AuthCredentials) {
-    let loginData: LoginData = await API.post('auth/login', data);
+    let loginData: SignInData = await API.post('auth/login', data);
     localStorage.setItem('token', loginData.token);
     let user: User = await API.get(`users/${loginData.user_id}`);
     setUser(user);

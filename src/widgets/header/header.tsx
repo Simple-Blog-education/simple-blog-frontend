@@ -6,11 +6,11 @@ export function Header() {
     let authorized = isAuthenticated.value;
     return <>
         <header>
-            <AppLink href="/" variant="header"><img src="/favicon.svg" height="48" alt="logo" className="logo" /></AppLink>
+            <AppLink href="/" variant="panel"><img src="/favicon.svg" height="48" alt="logo" className="logo" /></AppLink>
             <nav>
-                {!authorized ? <AppLink href="/auth" variant="header">Авторизация</AppLink> :
+                {!authorized ? <AppLink href="/auth" variant="panel">Авторизация</AppLink> :
                     <>
-                        <AppLink href="" variant="header">Профиль</AppLink>
+                        <AppLink href="" variant="panel">Профиль</AppLink>
                         <Button onClick={() => {
                             logout();
                             alert("Вы вышли из системы");

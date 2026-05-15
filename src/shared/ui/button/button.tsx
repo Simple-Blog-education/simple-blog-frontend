@@ -8,6 +8,7 @@ interface ButtonProps {
     disabled?: boolean;
     loading?: boolean;
     className?: string;
+    tabIndex?: number;
     onClick?: () => void;
     children: ComponentChildren
 }
@@ -19,6 +20,7 @@ export function Button({
     disabled = false,
     loading = false,
     className = '',
+    tabIndex = 0,
     onClick,
     children
 }: ButtonProps) {
@@ -27,6 +29,7 @@ export function Button({
             type={type}
             class={`button ${className} ${variant}`}
             disabled={disabled}
+            tabIndex={tabIndex}
             onClick={onClick}
         >
             {children}
