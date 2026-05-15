@@ -1,8 +1,0 @@
-.posts-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: clamp(325px, 25%, 900px);
-    gap: 1rem;
-}
