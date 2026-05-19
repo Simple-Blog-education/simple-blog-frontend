@@ -1,5 +1,5 @@
 import { useEffect } from "preact/hooks";
-import { usePosts } from "../hooks/usePosts";
+import { usePosts } from "../hooks/use_posts";
 import { PostCard } from "@/entities/post";
 import './post_list.css'
 import { Button } from "@/shared/ui/button/button";
