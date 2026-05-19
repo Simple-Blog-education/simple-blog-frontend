@@ -1,7 +1,7 @@
 import { useEffect } from "preact/hooks";
 import { useRoute } from "preact-iso";
 import './post_details.css'
-import { Heading } from "@/shared/ui";
+import { Heading, Markdown } from "@/shared/ui";
 import { usePost } from "@/features/post";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import { Text } from "@/shared/ui";
@@ -34,7 +34,7 @@ export function PostDetails() {
         <section class="post-details">
             <Heading level={1} variant="text">{header}</Heading>
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
-            <Text variant="body">{text}</Text>
+            <Markdown content={text} />
             <Heading level={2} variant="display">Комментарии</Heading>
             <CommentList post_id={postId} />
         </section >

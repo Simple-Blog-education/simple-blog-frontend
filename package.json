@@ -11,6 +11,8 @@
   "dependencies": {
     "@preact/signals": "^2.9.0",
     "@types/node": "^22.19.15",
+    "dompurify": "^3.4.5",
+    "marked": "^18.0.4",
     "preact": "^10.29.0",
     "preact-async-route": "^2.2.1",
     "preact-iso": "^2.11.1"

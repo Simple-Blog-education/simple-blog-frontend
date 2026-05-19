@@ -1,0 +1,40 @@
+.markdown-body {
+    font-family: var(--font-text);
+    line-height: var(--line-height-text);
+    color: var(--color-text);
+    word-wrap: break-word;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+    font-family: var(--font-text);
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-s);
+}
+
+.markdown-body p {
+    margin-bottom: var(--space-s);
+}
+
+.markdown-body code {
+    font-family: var(--font-display);
+    background-color: var(--color-muted);
+    padding: 2px 4px;
+    border-radius: var(--space-xs);
+}
+
+.markdown-body pre {
+    background-color: var(--color-muted);
+    padding: var(--space-s);
+    border-radius: var(--space-m);
+    overflow-x: auto;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding-left: var(--space-m);
+    color: var(--color-text);
+    opacity: 0.8;
+}
