@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: start;
     gap: var(--space-l);
+    max-width: 80ch;
 }
 
 .post-details p,

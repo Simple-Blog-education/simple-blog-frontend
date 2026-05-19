@@ -1,4 +1,3 @@
-import type { Post } from "@/entities/post";
 import type { User } from "@/entities/user";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
@@ -7,5 +6,6 @@ export interface Comment {
     post_id: UUIDv4;
     user: User;
     text: string;
+    create_date: Date;
     likes?: number;
 }

@@ -8,6 +8,7 @@ interface RawComment {
     post_id: UUIDv4;
     user_id: UUIDv4;
     text: string;
+    create_date: Date;
 }
 
 export async function getComments(post_id: UUIDv4) {
@@ -19,7 +20,8 @@ export async function getComments(post_id: UUIDv4) {
             id: rawComment.id,
             post_id: rawComment.post_id,
             user: user,
-            text: rawComment.text
+            text: rawComment.text,
+            create_date: new Date(rawComment.create_date)
         }
         comments.push(comment);
     }

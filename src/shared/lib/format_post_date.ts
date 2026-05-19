@@ -20,3 +20,14 @@ export function formatPostDate(
 
     return `${base} (обновлено: ${edited})`
 }
+
+export function formatCommentDate(createDate: Date, locale: string = 'ru-RU') {
+    return createDate.toLocaleString(locale, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    })
+}
