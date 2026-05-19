@@ -1,1 +1,1 @@
-//TODO структура см. post
+export type { Comment } from './model/comment.types'

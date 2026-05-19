@@ -7,4 +7,5 @@
     padding: var(--space-l);
     border-radius: 0.25rem;
     gap: var(--space-s);
+    width: 100%;
 }

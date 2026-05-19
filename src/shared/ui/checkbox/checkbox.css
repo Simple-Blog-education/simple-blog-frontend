@@ -1,0 +1,5 @@
+.checkbox-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-s);
+}

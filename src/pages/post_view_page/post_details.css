@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    gap: var(--space-l);
 }
-.post-details p, .post-details h2 {
+
+.post-details p,
+.post-details h2 {
     text-align: justify;
 }

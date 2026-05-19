@@ -1,6 +1,4 @@
-import { useState } from 'preact/hooks';
 import './input.css'
-import { Button } from '../button/button';
 
 interface InputProps {
     type?: 'text' | 'email' | 'password';
@@ -12,7 +10,7 @@ interface InputProps {
     label?: string;
     disabled?: boolean;
     required?: boolean;
-    showToggle?: boolean;
+    visible?: boolean;
     className?: string;
     onInput?: (value: string) => void;
 }
@@ -27,15 +25,14 @@ export function Input({
     label,
     disabled = false,
     required = false,
-    showToggle = false,
+    visible = false,
     className = '',
     onInput
 }: InputProps) {
     const fieldId = id || name;
-    const [hidden, setHidden] = useState(true);
 
-    const hiddenType = showToggle && type === 'password'
-        ? (hidden ? 'password' : 'text')
+    const hiddenType = type === 'password'
+        ? (visible ? 'text' : 'password')
         : type;
 
     const handleInput = (e: Event) => {
@@ -62,17 +59,6 @@ export function Input({
                     onInput={handleInput}
                     className={`input-field ${className}`}
                 />
-                {showToggle && type === 'password' && (
-                    <Button
-                        type="button"
-                        className="input-toggle"
-                        onClick={() => setHidden(!hidden)}
-                        variant='outline'
-                        tabIndex={-1}
-                    >
-                        {hidden ? 'Показать' : 'Скрыть'}
-                    </Button>
-                )}
             </div>
 
         </div>

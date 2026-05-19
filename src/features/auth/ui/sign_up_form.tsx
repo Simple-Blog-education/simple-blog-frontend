@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import { type SignUpData } from "@/features/auth/api/auth.api";
-import { Button, Input, Text } from "@/shared/ui";
+import { Button, Checkbox, Input, Text } from "@/shared/ui";
+import { usePasswordVisibility } from "../hooks/use_password_visibility";
 
 interface SignUpFormProps {
     onSubmit: (data: SignUpData) => Promise<boolean>;
@@ -14,6 +15,7 @@ export function SignUpForm({ onSubmit, onSwitch }: SignUpFormProps) {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const { visible, toggle } = usePasswordVisibility(false);
 
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
@@ -45,8 +47,9 @@ export function SignUpForm({ onSubmit, onSwitch }: SignUpFormProps) {
     return (<form onSubmit={handleSubmit}>
         <Input label="Имя пользователя" name="username" value={username} onInput={setUsername} required />
         <Input label="Эл. почта" name="email" type="email" value={email} onInput={setEmail} required />
-        <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} showToggle required />
-        <Input label="Повторите пароль" name="repeatPassword" type="password" value={repeatPassword} onInput={setRepeatPassword} showToggle required />
+        <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />
+        <Input label="Повторите пароль" name="repeatPassword" type="password" value={repeatPassword} onInput={setRepeatPassword} visible={visible} required />
+        <Checkbox label="Показать пароль" name="showPassword" checked={visible} onChange={toggle} />
         {error && <p className="error">{error}</p>}
         <Button type="submit" loading={loading}>Зарегистрироваться</Button>
         <Text variant="ui">Есть аккаунт? <Button variant="outline" onClick={onSwitch}>Войти</Button></Text>

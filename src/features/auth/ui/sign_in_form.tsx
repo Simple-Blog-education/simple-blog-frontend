@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import type { AuthCredentials } from "../api/auth.api";
-import { Button, Input, Text } from "@/shared/ui";
+import { Button, Checkbox, Input, Text } from "@/shared/ui";
+import { usePasswordVisibility } from "../hooks/use_password_visibility";
 
 interface SignInFormProps {
     onSubmit: (data: AuthCredentials) => Promise<boolean>;
@@ -13,6 +14,7 @@ export function SignInForm({ onSubmit, onSwitch }: SignInFormProps) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const { visible, toggle } = usePasswordVisibility(false);
 
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
@@ -32,7 +34,8 @@ export function SignInForm({ onSubmit, onSwitch }: SignInFormProps) {
 
     return (<form onSubmit={handleSubmit}>
         <Input label="Имя пользователя" name="username" value={username} onInput={setUsername} required />
-        <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} showToggle required />
+        <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />
+        <Checkbox label="Показать пароль" name="showPassword" checked={visible} onChange={toggle} />
         {error && <p className="error">{error}</p>}
         <Button type="submit" loading={loading}>Войти</Button>
         <Text variant="ui">Нет аккаунта? <Button variant="outline" onClick={onSwitch}>Зарегистрироваться</Button></Text>

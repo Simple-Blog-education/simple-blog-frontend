@@ -1,5 +1,6 @@
 import { Heading } from '@/shared/ui/heading/heading';
 import { PostList } from "@/features/post/ui/post_list";
+import './posts.css'
 export function Posts() {
     return (
         <>

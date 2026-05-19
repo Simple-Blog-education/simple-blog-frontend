@@ -10,16 +10,14 @@ export function PostList() {
     useEffect(() => { loadPosts(); }, [])
 
     return (
-        <section>
+        <section className="posts">
             {loading.value && <p>Загрузка...</p>}
             {error.value && <><p className="error">{error.value}</p><Button onClick={() => loadPosts()}>Повторить</Button></>}
-            <div className="posts">
-                {
-                    posts.value.map((post) =>
-                        <PostCard post={post} />
-                    )
-                }
-            </div>
+            {
+                posts.value.map((post) =>
+                    <PostCard post={post} />
+                )
+            }
         </section>
     )
 }

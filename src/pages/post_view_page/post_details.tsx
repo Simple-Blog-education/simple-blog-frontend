@@ -7,6 +7,7 @@ import type { UUIDv4 } from "@/shared/lib/uuid";
 import { Text } from "@/shared/ui";
 import { Button } from "@/shared/ui/button/button";
 import { formatPostDate } from "@/shared/lib/format_post_date";
+import { CommentList } from "@/features/comment/ui/comment_list";
 
 export function PostDetails() {
     const route = useRoute();
@@ -34,6 +35,8 @@ export function PostDetails() {
             <Heading level={1} variant="text">{header}</Heading>
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
             <Text variant="body">{text}</Text>
+            <Heading level={2} variant="display">Комментарии</Heading>
+            <CommentList post_id={postId} />
         </section >
     )
 }

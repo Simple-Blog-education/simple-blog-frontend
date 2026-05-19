@@ -35,7 +35,7 @@ export function Footer() {
                 <AppLink variant='panel' href="/about">О проекте</AppLink>
                 <AppLink variant='panel' href="/">Все посты</AppLink>
             </nav>
-            <Text className="footer__author">icy0o, 2026</Text>
+            <Text variant='panel' className="footer__author">icy0o, 2026</Text>
         </footer>
     </>
 }
