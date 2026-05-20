@@ -1,6 +1,7 @@
 .about__section {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-s);
+    gap: var(--space-m);
     text-align: justify;
+    max-width: 80ch;
 }

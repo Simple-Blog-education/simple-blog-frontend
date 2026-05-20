@@ -30,3 +30,14 @@
 .outline:hover {
     background-color: var(--color-border);
 }
+
+.danger {
+    background-color: var(--color-error);
+    border: 1px solid var(--color-error);
+    color: var(--color-bg)
+}
+
+.danger:hover {
+    background-color: var(--color-error-hover);
+    border-color: var(--color-error-hover);
+}

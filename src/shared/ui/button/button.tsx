@@ -3,7 +3,7 @@ import './button.css'
 
 interface ButtonProps {
     type?: 'submit' | 'button' | 'reset';
-    variant?: 'primary' | 'outline';
+    variant?: 'primary' | 'outline' | 'danger';
     // size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     loading?: boolean;

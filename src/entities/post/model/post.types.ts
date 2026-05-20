@@ -7,7 +7,19 @@ export interface Post {
     text: string;
     create_date: Date;
     edit_date: Date;
-    user_id: number;
+    user_id: UUIDv4;
     user?: User;
     likesCount: number;
+}
+
+export interface NewPost {
+    header: string;
+    text: string;
+    user_id: UUIDv4;
+}
+
+export interface PostChangeset {
+    id: UUIDv4;
+    header: string;
+    text: string;
 }
