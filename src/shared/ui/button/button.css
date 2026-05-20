@@ -32,9 +32,12 @@
 }
 
 .danger {
-    /* TODO: семантические цвета */
+    background-color: var(--color-error);
+    border: 1px solid var(--color-error);
+    color: var(--color-bg)
 }
 
 .danger:hover {
-    /* TODO: семантические цвета */
+    background-color: var(--color-error-hover);
+    border-color: var(--color-error-hover);
 }

@@ -1,5 +1,19 @@
-import { marked } from "marked";
+import { Marked } from "marked";
 import DOMPurify from "dompurify";
+import hljs from "highlight.js";
+import { markedHighlight } from "marked-highlight";
+
+const marked = new Marked(markedHighlight(
+    {
+        emptyLangClass: 'hljs',
+        langPrefix: 'hljs language-',
+        highlight(code, lang) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(code, { language }).value;
+        }
+    }
+))
+
 marked.setOptions({
     breaks: true,
     gfm: true
@@ -16,7 +30,7 @@ export function renderMarkdown(markdown: string) {
             'img', 'hr', 'span', 'div', 'input', // input для чекбоксов задач
         ],
         ALLOWED_ATTR: [
-            'href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel',
+            'href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel', 'class',
             'type', 'checked', 'disabled', // для input
         ],
     });

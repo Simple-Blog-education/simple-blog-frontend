@@ -48,7 +48,7 @@ export function PostForm({ postId }: PostFormProps) {
             <Input label="Заголовок" value={title} onInput={setTitle} required />
             <div className="editor">
                 <textarea value={content} onInput={(e) => setContent(e.currentTarget.value)} required />
-                <Markdown content={content} />
+                <Markdown content={content} previewMode={true} />
             </div>
             {error.value && <Text className="error">{error.value}</Text>}
             <Button type="submit" loading={loading.value}>

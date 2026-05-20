@@ -1,5 +1,5 @@
 import { useEffect } from "preact/hooks";
-import { useRoute } from "preact-iso";
+import { useLocation, useRoute } from "preact-iso";
 import './post_details.css'
 import { Heading, Markdown } from "@/shared/ui";
 import { usePost } from "@/features/post";
@@ -11,6 +11,7 @@ import { CommentList } from "@/features/comment/ui/comment_list";
 
 export function PostDetails() {
     const route = useRoute();
+    const location = useLocation();
     const { post, loading, error, loadPost } = usePost();
     const postId = route.params.id as UUIDv4;
 
@@ -34,6 +35,7 @@ export function PostDetails() {
         <section class="post-details">
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
             <Markdown content={text} />
+            <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>
             <Heading level={2} variant="display">Комментарии</Heading>
             <CommentList post_id={postId} />
         </section >

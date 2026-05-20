@@ -19,7 +19,7 @@ export function PostCard({ post }: { post: Post }) {
                 href={`/posts/${post.id}/`}
                 aria-label={`Читать пост "${post.header}"`}
             >
-                <Heading level={2} bold={true}>{post.header}</Heading>
+                <Heading level={2}>{post.header}</Heading>
             </a>
 
             <Text variant='body'>{previewText}</Text>

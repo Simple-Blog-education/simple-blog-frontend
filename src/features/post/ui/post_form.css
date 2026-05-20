@@ -1,7 +1,12 @@
 form {
     display: flex;
     flex-direction: column;
+    width: 75%;
     max-width: 160ch;
+}
+
+form>button {
+    align-self: flex-end;
 }
 
 textarea {
@@ -21,11 +26,11 @@ textarea {
     display: flex;
     gap: var(--space-m);
     min-height: 40ch;
-    width: 80ch;
 }
 
 .editor .markdown-body {
     border: 1px solid var(--color-border);
+    background-color: var(--color-input);
     border-radius: var(--space-xs);
     padding: var(--space-s);
     width: 50%;

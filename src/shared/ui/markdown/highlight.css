@@ -1,0 +1,62 @@
+/* Светлая тема (по умолчанию) */
+:root {
+    --hljs-bg: #ffffff;
+    --hljs-color: #24292e;
+    --hljs-keyword: #d73a49;
+    --hljs-string: #032f62;
+    --hljs-comment: #6a737d;
+    --hljs-function: #6f42c1;
+    --hljs-number: #005cc5;
+    --hljs-selector: #22863a;
+}
+
+/* Тёмная тема */
+:root.dark {
+    --hljs-bg: #0d1117;
+    --hljs-color: #c9d1d9;
+    --hljs-keyword: #ff7b72;
+    --hljs-string: #a5d6ff;
+    --hljs-comment: #8b949e;
+    --hljs-function: #d2a8ff;
+    --hljs-number: #79c0ff;
+    --hljs-selector: #7ee787;
+}
+
+/* Стили для highlight.js через переменные */
+.hljs {
+    background: var(--hljs-bg);
+    color: var(--hljs-color);
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+    color: var(--hljs-keyword);
+}
+
+.hljs-string,
+.hljs-addition {
+    color: var(--hljs-string);
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: var(--hljs-comment);
+}
+
+.hljs-title,
+.hljs-section {
+    color: var(--hljs-function);
+}
+
+.hljs-number,
+.hljs-literal {
+    color: var(--hljs-number);
+}
+
+.hljs-selector-class,
+.hljs-selector-id {
+    color: var(--hljs-selector);
+}
+
+/* Добавьте остальные классы по необходимости */
