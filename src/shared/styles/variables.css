@@ -9,6 +9,7 @@
     --color-border: #d6d6d6;
     --color-muted: #f0f0f0;
     --color-error: #d32f2f;
+    --color-input: #fdfdfd;
 
     /* отступы */
     --space-xs: 4px;
@@ -43,6 +44,7 @@
 /* Тёмная тема */
 :root.dark {
     --color-bg: #1a1b23;
+    --color-input: #1f1f1f;
     --color-text: #e0e0e0;
     --color-panel: #101010;
     --color-accent: #5cc4f2;
@@ -56,6 +58,7 @@
 @media (prefers-color-scheme: dark) {
     :root:not(.light):not(.dark) {
         --color-bg: #1a1b23;
+        --color-input: #1f1f1f;
         --color-text: #e0e0e0;
         --color-panel: #101010;
         --color-accent: #5cc4f2;

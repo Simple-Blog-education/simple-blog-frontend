@@ -28,5 +28,9 @@ export async function updatePost(changeset: PostChangeset) {
     return await API.put<PostChangeset>(`posts/${changeset.id}`, {
         header: changeset.header,
         text: changeset.text
-    })
+    });
+}
+
+export async function deletePost(id: UUIDv4) {
+    return await API.delete<boolean>(`posts/${id}`);
 }

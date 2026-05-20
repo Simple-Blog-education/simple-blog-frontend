@@ -30,3 +30,11 @@
 .outline:hover {
     background-color: var(--color-border);
 }
+
+.danger {
+    /* TODO: семантические цвета */
+}
+
+.danger:hover {
+    /* TODO: семантические цвета */
+}

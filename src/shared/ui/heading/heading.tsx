@@ -22,12 +22,12 @@ const tagMap: Record<HeadingLevel, string> = {
 }
 
 const sizeMap: Record<HeadingLevel, string> = {
-    1: 'var:(--heading-1)',
-    2: 'var:(--heading-2)',
-    3: 'var:(--heading-3)',
-    4: 'var:(--heading-4)',
-    5: 'var:(--heading-5)',
-    6: 'var:(--heading-6)'
+    1: 'var(--heading-1)',
+    2: 'var(--heading-2)',
+    3: 'var(--heading-3)',
+    4: 'var(--heading-4)',
+    5: 'var(--heading-5)',
+    6: 'var(--heading-6)'
 }
 
 export function Heading({

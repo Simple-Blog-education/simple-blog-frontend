@@ -4,6 +4,7 @@
     align-items: start;
     gap: var(--space-l);
     max-width: 80ch;
+    width: 100%;
 }
 
 .post-details p,

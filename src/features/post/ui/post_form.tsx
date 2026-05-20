@@ -1,14 +1,18 @@
 import type { UUIDv4 } from "@/shared/lib/uuid";
-import { useLocation, useRoute } from "preact-iso";
+import { useLocation } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
 import { usePostForm } from "../hooks/use_post_form";
-import { currentUser } from "@/features/auth";
-import { Text } from "@/shared/ui";
+import { currentUser, isAuthenticated } from "@/features/auth";
+import { Button, Input, Markdown, Text } from "@/shared/ui";
 
-export function PostForm() {
+import './post_form.css'
+
+interface PostFormProps {
+    postId: UUIDv4 | null
+}
+
+export function PostForm({ postId }: PostFormProps) {
     const location = useLocation();
-    const route = useRoute();
-    const postId = route.params.id as UUIDv4;
     const { submit, update, loading, error, initialData, isFetching } = usePostForm(postId);
 
     const [title, setTitle] = useState('');
@@ -27,22 +31,29 @@ export function PostForm() {
 
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
-        let success = false;
-        if (postId) {
+        console.log(currentUser.value)
+        if (!postId || !currentUser.value) {
             const post = await submit({ header: title, text: content, user_id: currentUser.value!.id });
-            if (post) success = true;
+            if (post) location.route("/")
         }
-        else {
+        else if (postId) {
             const post = await update({ id: postId, header: title, text: content });
-            if (post) success = true;
-        }
-        if (success) {
-            location.route(`/posts/${postId}`);
+            if (post) location.route(`/posts/${postId}`);
         }
     };
-
+    if (!isAuthenticated.value) location.route("/")
     if (isFetching.value) return <Text variant="ui">Загрузка поста...</Text>
     return (
-        <Text>HEHE</Text>
+        <form onSubmit={handleSubmit}>
+            <Input label="Заголовок" value={title} onInput={setTitle} required />
+            <div className="editor">
+                <textarea value={content} onInput={(e) => setContent(e.currentTarget.value)} required />
+                <Markdown content={content} />
+            </div>
+            {error.value && <Text className="error">{error.value}</Text>}
+            <Button type="submit" loading={loading.value}>
+                {postId ? "Сохранить" : "Опубликовать"}
+            </Button>
+        </form>
     )
 }

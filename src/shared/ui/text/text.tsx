@@ -1,6 +1,6 @@
 import type { ComponentChildren } from "preact";
 
-type TextVariant = 'body' | 'ui' | 'ui-thin' | 'code' | 'panel';
+type TextVariant = 'body' | 'ui' | 'ui-thin' | 'code' | 'panel' | 'error';
 type TextTag = 'p' | 'span' | 'div';
 
 
@@ -46,6 +46,13 @@ const variantStyles: Record<TextVariant, Record<string, string>> = {
         lineHeight: 'var(--line-height-display)',
         fontWeight: 'var(--font-weight-bold)',
         color: 'var(--color-text-panel)',
+    },
+    error: {
+        fontFamily: 'var(--font-display)',
+        fontSize: 'var(--text-ui)',
+        lineHeight: 'var(--line-height-display)',
+        fontWeight: 'var(--font-weight-bold)',
+        color: 'var(--color-text-panel)', // TODO: семантические цвета
     }
 };
 

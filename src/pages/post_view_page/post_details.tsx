@@ -25,14 +25,13 @@ export function PostDetails() {
     );
     if (!post.value) return <main class="post-details"><Text variant="ui">Пост не найден</Text></main>;
 
-    const { header, text, create_date, edit_date } = post.value;
+    const { text, create_date, edit_date } = post.value;
     const dateString = formatPostDate(
-        create_date ? new Date(create_date) : new Date(),
-        edit_date ? new Date(edit_date) : undefined
+        create_date, //? new Date(create_date) : new Date(),
+        edit_date // ? new Date(edit_date) : undefined
     );
     return (
         <section class="post-details">
-            <Heading level={1} variant="text">{header}</Heading>
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
             <Markdown content={text} />
             <Heading level={2} variant="display">Комментарии</Heading>
