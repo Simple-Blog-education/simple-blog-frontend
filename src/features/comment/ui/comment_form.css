@@ -1,0 +1,7 @@
+.comment-form {
+    width: 100%;
+}
+
+.comment-form>button {
+    align-self: flex-end;
+}

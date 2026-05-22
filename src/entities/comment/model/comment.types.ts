@@ -9,3 +9,9 @@ export interface Comment {
     create_date: Date;
     likes?: number;
 }
+
+export interface NewComment {
+    post_id: UUIDv4,
+    user_id: UUIDv4,
+    text: string
+}

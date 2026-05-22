@@ -8,6 +8,8 @@ import { Text } from "@/shared/ui";
 import { Button } from "@/shared/ui/button/button";
 import { formatPostDate } from "@/shared/lib/format_post_date";
 import { CommentList } from "@/features/comment/ui/comment_list";
+import { CommentForm } from "@/features/comment/ui/comment_form";
+import { currentUser } from "@/features/auth";
 
 export function PostDetails() {
     const route = useRoute();
@@ -37,6 +39,7 @@ export function PostDetails() {
             <Markdown content={text} />
             <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>
             <Heading level={2} variant="display">Комментарии</Heading>
+            {currentUser.value && <CommentForm userId={currentUser.value.id} postId={postId} />}
             <CommentList post_id={postId} />
         </section >
     )

@@ -1,7 +1,7 @@
 import { CommentCard } from "@/entities/comment/ui/comment_card";
 import "./comment_list.css"
 import { useEffect } from "preact/hooks";
-import { useComments } from "../hooks/useComments";
+import { useComments } from "../hooks/use_comments";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import { Button, Text } from "@/shared/ui";
 export function CommentList({ post_id }: { post_id: UUIDv4 }) {

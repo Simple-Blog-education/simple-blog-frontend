@@ -42,9 +42,9 @@ export function Input({
 
     return (
         <div className={`input-wrapper ${error && 'error'}`}>
-            <label htmlFor={fieldId} className="input-label">
+            <label htmlFor={fieldId}>
                 {label}
-                {required && <span className="input-label__required" aria-hidden="true"> *</span>}
+                {required && <span aria-hidden="true"> *</span>}
             </label>
             <div className="input-field-wrapper">
                 <input

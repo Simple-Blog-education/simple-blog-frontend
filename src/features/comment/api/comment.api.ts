@@ -1,6 +1,7 @@
-import type { Comment } from "@/entities/comment";
+import type { Comment, NewComment } from "@/entities/comment";
 import type { User } from "@/entities/user";
 import { API } from "@/shared/api";
+import { API_ENDPOINTS } from "@/shared/api/endpoints";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
 interface RawComment {
@@ -27,4 +28,8 @@ export async function getComments(post_id: UUIDv4) {
     }
 
     return comments;
+}
+
+export async function createComment(data: NewComment) {
+    return await API.post(API_ENDPOINTS.comments.create, data);
 }
