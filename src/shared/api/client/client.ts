@@ -1,7 +1,10 @@
+import { buildUrl, type QueryParams } from "@/shared/lib/build_url";
+
 const BASE_URL = "http://localhost:8000/api/v1";
 
 interface RequestOptions {
     headers?: Record<string, string>;
+    params?: QueryParams
     body?: any;
 }
 
@@ -19,7 +22,7 @@ class APIClient {
 
     private getAuthHeaders(): Record<string, string> {
         const token = localStorage.getItem('token');
-        return token ? {Authorization: `Bearer ${token}` } : {};
+        return token ? { Authorization: `Bearer ${token}` } : {};
     }
 
     private async request<T>(
@@ -39,7 +42,7 @@ class APIClient {
             headers
         };
 
-        if(options.body !== undefined) {
+        if (options.body !== undefined) {
             config.body = JSON.stringify(options.body);
         }
 
@@ -51,13 +54,13 @@ class APIClient {
         catch (err: any) {
             throw new Error(`Ошибка сети: ${err.message}`)
         }
-        if(!response.ok) {
+        if (!response.ok) {
             let errorMessage = response.statusText;
             try {
                 const errorBody = await response.json();
                 errorMessage = errorBody.message || errorBody.detail || errorMessage;
             }
-            catch {}
+            catch { }
             if (response.status === 401) {
                 localStorage.removeItem('token');
                 window.location.href = '/auth'; // ???
@@ -71,20 +74,22 @@ class APIClient {
         return response.json();
     }
 
-    get<T = any>(path: string, headers?: Record<string, string>) {
-        return this.request<T>('GET', path, {headers})
+    get<T = any>(path: string, config?: RequestOptions) {
+        const fullPath = buildUrl(path, config?.params);
+        return this.request<T>('GET', fullPath, { headers: config?.headers });
     }
 
-    post<T = any>(path: string, body?: any,  headers?: Record<string, string>) {
-        return this.request<T>('POST', path, {body, headers})
+    post<T = any>(path: string, body?: any, headers?: Record<string, string>) {
+        return this.request<T>('POST', path, { body, headers });
     }
 
-    put<T = any>(path: string, body?: any,  headers?: Record<string, string>) {
-        return this.request<T>('PUT', path, {body, headers})
+    put<T = any>(path: string, body?: any, headers?: Record<string, string>) {
+        return this.request<T>('PUT', path, { body, headers });
     }
 
-    delete<T = any>(path: string, headers?: Record<string, string>) {
-        return this.request<T>('DELETE', path, {headers})
+    delete<T = any>(path: string, config?: RequestOptions) {
+        const fullPath = buildUrl(path, config?.params);
+        return this.request<T>('DELETE', fullPath, { headers: config?.headers });
     }
 }
 

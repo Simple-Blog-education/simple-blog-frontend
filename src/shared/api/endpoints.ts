@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   users: {
     all: 'users/all',
     byId: (id: UUIDv4) => `users/${id}`,
+    byUsername: 'users'
   },
 
   // Посты

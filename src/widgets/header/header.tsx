@@ -1,4 +1,4 @@
-import { isAuthenticated, logout } from "@/features/auth";
+import { currentUser, isAuthenticated, logout } from "@/features/auth";
 import { AppLink } from "@/shared/ui";
 import { Button } from "@/shared/ui";
 import "./header.css"
@@ -10,7 +10,7 @@ export function Header() {
             <nav>
                 {!authorized ? <AppLink href="/auth" variant="panel">Авторизация</AppLink> :
                     <>
-                        <AppLink href="" variant="panel">Профиль</AppLink>
+                        <AppLink href={`/profile/${currentUser.value?.username}`} variant="panel">Профиль</AppLink>
                         <Button onClick={() => {
                             logout();
                             alert("Вы вышли из системы");

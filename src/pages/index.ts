@@ -1,6 +1,7 @@
 export { About as AboutPage } from './about_page/about'
 export { AuthPage } from './auth_page/auth_page'
 export { PostDetails as PostViewPage } from './post_view_page/post_details'
-export { Posts as PostsPage } from './posts/posts'
+export { Posts as PostsPage } from './posts_page/posts'
 export { EditPostPage } from './edit_post_page/edit_post'
 export { CreatePostPage } from './create_post_page/create_post'
+export { ProfilePage } from './profile_page/profile_page'

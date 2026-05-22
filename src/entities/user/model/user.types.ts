@@ -4,8 +4,8 @@ export interface User {
     id: UUIDv4;
     username: string;
     email: string,
-    firstName?: string | undefined;
-    lastName?: string | undefined;
-    regDate: Date;
+    first_name?: string | undefined;
+    last_name?: string | undefined;
+    reg_date: Date;
     role: 'User' | 'Admin';
 }

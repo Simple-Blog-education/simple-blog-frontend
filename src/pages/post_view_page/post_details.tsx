@@ -19,14 +19,14 @@ export function PostDetails() {
 
     useEffect(() => { if (postId) loadPost(postId); }, [postId])
 
-    if (loading.value) return <main class="post-details"><Text variant="ui">Загрузка...</Text></main>;
+    if (loading.value) return <section class="post-details"><Text variant="ui">Загрузка...</Text></section>;
     if (error.value) return (
         <section class="post-details">
             <Text variant="body">{error.value}</Text>
             <Button onClick={() => postId && loadPost(postId)}>Повторить</Button>
         </section>
     );
-    if (!post.value) return <main class="post-details"><Text variant="ui">Пост не найден</Text></main>;
+    if (!post.value) return <section class="post-details"><Text variant="ui">Пост не найден</Text></section>;
 
     const { text, create_date, edit_date } = post.value;
     const dateString = formatPostDate(
