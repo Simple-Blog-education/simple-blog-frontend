@@ -7,3 +7,4 @@ export { Select } from './select/select';
 export { Checkbox } from './checkbox/checkbox'
 export { Markdown } from './markdown/markdown'
 export type { SelectOption } from './select/select'
+export { ProtectedRoute } from './protected_route/protected_route'
