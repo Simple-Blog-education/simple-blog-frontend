@@ -2,7 +2,7 @@ import "./styles/global.css";
 import { ErrorBoundary, LocationProvider, Route, Router } from "preact-iso";
 import { NotFound } from "./routes";
 import { BaseLayout } from "./layouts/base_layout";
-import { AboutPage, AuthPage, PostsPage, PostViewPage, EditPostPage, CreatePostPage, ProfilePage } from "@/pages";
+import { AboutPage, AuthPage, PostsPage, PostViewPage, EditPostPage, CreatePostPage, ProfilePage, EditProfilePage, ChangePasswordPage } from "@/pages";
 import { currentUser, isAuthenticated } from "@/features/auth";
 import { getCurrentUser } from "@/features/auth/api/auth.api";
 import { useEffect } from "preact/hooks";
@@ -40,6 +40,8 @@ export function App() {
           <Route path="/" component={wrapWithLayout(PostsPage)} />
           <ProtectedRoute path="/posts/:id/edit" component={wrapWithLayout(EditPostPage)} />
           <ProtectedRoute path="/posts/new" component={wrapWithLayout(CreatePostPage)} />
+          <ProtectedRoute path="/profile/:username/edit" component={wrapWithLayout(EditProfilePage)} />
+          <ProtectedRoute path="/profile/:username/change_password" component={wrapWithLayout(ChangePasswordPage)} />
           <Route path="/profile/:username" component={wrapWithLayout(ProfilePage)} />
           <Route path="/posts/:id" component={wrapWithLayout(PostViewPage)} />
           <Route path="/about" component={wrapWithLayout(AboutPage)} />

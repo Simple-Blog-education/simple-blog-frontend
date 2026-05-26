@@ -19,6 +19,7 @@ export const API_ENDPOINTS = {
   auth: {
     login: 'auth/login',
     signup: 'auth/signup',
+    changePassword: 'auth/change_password'
   },
 
   // Комментарии
