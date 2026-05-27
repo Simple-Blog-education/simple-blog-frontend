@@ -1,0 +1,9 @@
+.body {
+    font-family: 'var(--font-text)';
+    font-size: 'var(--text-base)';
+    line-height: 'var(--line-height-text)';
+    font-weight: 'var(--font-weight-default)';
+    color: 'var(--color-text)';
+}
+
+.ui {}

@@ -52,7 +52,7 @@ const variantStyles: Record<TextVariant, Record<string, string>> = {
         fontSize: 'var(--text-ui)',
         lineHeight: 'var(--line-height-display)',
         fontWeight: 'var(--font-weight-bold)',
-        color: 'var(--color-text-panel)', // TODO: семантические цвета
+        color: 'var(--color-error)',
     }
 };
 

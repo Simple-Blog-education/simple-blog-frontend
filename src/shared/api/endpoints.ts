@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   users: {
     all: 'users/all',
     byId: (id: UUIDv4) => `users/${id}`,
+    byUsername: 'users'
   },
 
   // Посты
@@ -18,6 +19,7 @@ export const API_ENDPOINTS = {
   auth: {
     login: 'auth/login',
     signup: 'auth/signup',
+    changePassword: 'auth/change_password'
   },
 
   // Комментарии
