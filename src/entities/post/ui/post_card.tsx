@@ -1,12 +1,10 @@
-import { Heading } from '@/shared/ui';
+import { AppLink, Heading } from '@/shared/ui';
 import type { Post } from '@/entities/post'
 import './post_card.css';
-import { truncateText } from '@/shared/lib/truncate_text';
 import { Text } from '@/shared/ui/text/text';
 import { stripMarkdown } from '@/shared/lib/strip_markdown';
 
 export function PostCard({ post }: { post: Post }) {
-    // --- Логика дат ---
     const isEdited = post.create_date.getTime() !== post.edit_date.getTime();
     const publishedDate = post.create_date;
     const editedDate = isEdited ? post.edit_date : null;
@@ -15,12 +13,12 @@ export function PostCard({ post }: { post: Post }) {
 
     return (
         <article className="post_card">
-            <a
+            <AppLink
                 href={`/posts/${post.id}/`}
                 aria-label={`Читать пост "${post.header}"`}
             >
                 <Heading level={2}>{post.header}</Heading>
-            </a>
+            </AppLink>
 
             <Text variant='body'>{previewText}</Text>
 

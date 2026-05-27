@@ -7,12 +7,12 @@ import { Button } from "@/shared/ui/button/button";
 
 export function PostList() {
     const { posts, loading, error, loadPosts } = usePosts();
-    useEffect(() => { loadPosts(); }, [])
+    useEffect(() => { loadPosts({ page: 1, perPage: 10 }); }, [])
 
     return (
         <section className="posts">
             {loading.value && <p>Загрузка...</p>}
-            {error.value && <><p className="error">{error.value}</p><Button onClick={() => loadPosts()}>Повторить</Button></>}
+            {error.value && <><p className="error">{error.value}</p><Button onClick={() => loadPosts({ page: 1, perPage: 10 })}>Повторить</Button></>}
             {
                 posts.value.map((post) =>
                     <PostCard post={post} />

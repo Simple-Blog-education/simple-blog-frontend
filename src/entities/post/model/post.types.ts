@@ -7,9 +7,8 @@ export interface Post {
     text: string;
     create_date: Date;
     edit_date: Date;
-    user_id: UUIDv4;
-    user?: User;
-    likesCount: number;
+    author_username: string,
+    author_name: string
 }
 
 export interface NewPost {

@@ -3,8 +3,16 @@ import type { NewPost, Post } from "@/entities/post";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import type { PostChangeset } from "@/entities/post/model/post.types";
 
-export async function getPosts() {
-    let posts: Array<Post> = await API.get<Post[]>("posts/all")
+export interface PostSearchParams {
+    page: number,
+    perPage: number,
+    query?: string
+}
+
+export async function getPosts(params: PostSearchParams) {
+    let posts: Array<Post> = await API.get<Post[]>("posts", {
+        params: { page: params.page, per_page: params.perPage, query: params.query }
+    })
     for (let post of posts) {
         post.create_date = new Date(post.create_date);
         post.edit_date = new Date(post.edit_date);
