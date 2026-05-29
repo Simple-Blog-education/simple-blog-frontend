@@ -24,10 +24,16 @@
     border: 1px solid var(--color-accent);
     color: var(--color-accent);
     background-color: var(--color-bg);
-    padding: var(--space-xs);
+    padding: var(--space-s);
 }
 
-.outline:hover {
+.outline:disabled {
+    color: var(--color-muted);
+    border-color: var(--color-muted);
+    cursor: default;
+}
+
+.outline:hover:not(:disabled) {
     background-color: var(--color-border);
 }
 

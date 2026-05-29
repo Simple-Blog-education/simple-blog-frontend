@@ -1,7 +1,7 @@
 import { API } from "@/shared/api";
 import type { NewPost, Post } from "@/entities/post";
 import type { UUIDv4 } from "@/shared/lib/uuid";
-import type { PostChangeset } from "@/entities/post/model/post.types";
+import type { PostChangeset, PostPaginatedResponse } from "@/entities/post/model/post.types";
 
 export interface PostSearchParams {
     page: number,
@@ -10,10 +10,10 @@ export interface PostSearchParams {
 }
 
 export async function getPosts(params: PostSearchParams) {
-    let posts: Array<Post> = await API.get<Post[]>("posts", {
+    let posts: PostPaginatedResponse = await API.get<PostPaginatedResponse>("posts", {
         params: { page: params.page, per_page: params.perPage, query: params.query }
     })
-    for (let post of posts) {
+    for (let post of posts.data) {
         post.create_date = new Date(post.create_date);
         post.edit_date = new Date(post.edit_date);
     }

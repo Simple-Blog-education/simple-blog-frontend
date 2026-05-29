@@ -11,6 +11,13 @@ export interface Post {
     author_name: string
 }
 
+export interface PostPaginatedResponse {
+    data: Post[];
+    total: number;
+    page: number;
+    per_page: number;
+}
+
 export interface NewPost {
     header: string;
     text: string;
