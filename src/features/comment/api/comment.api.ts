@@ -16,7 +16,7 @@ export async function getComments(post_id: UUIDv4) {
     const rawComments = await API.get<RawComment[]>(`posts/${post_id}/comments`);
     const comments = [];
     for (let rawComment of rawComments) {
-        let user = await API.get<User>(`users/${rawComment.user_id}`);
+        let user = await API.get<User>(`users/id/${rawComment.user_id}`);
         let comment: Comment = {
             id: rawComment.id,
             post_id: rawComment.post_id,
