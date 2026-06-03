@@ -3,7 +3,7 @@ import { usePosts } from "../hooks/use_posts";
 import { PostCard } from "@/entities/post";
 import './post_list.css'
 import { Button } from "@/shared/ui/button/button";
-import { Pagination, Text } from "@/shared/ui";
+import { Pagination } from "@/shared/ui";
 
 
 export function PostList() {

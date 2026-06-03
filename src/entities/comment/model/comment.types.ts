@@ -1,13 +1,20 @@
-import type { User } from "@/entities/user";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
 export interface Comment {
     id: UUIDv4;
     post_id: UUIDv4;
-    user: User;
+    username: string;
     text: string;
     create_date: Date;
-    likes?: number;
+    likes: number;
+    is_liked?: boolean;
+}
+
+export interface CommentPaginatedResponse {
+    data: Comment[];
+    page: number;
+    per_page: number;
+    total: number;
 }
 
 export interface NewComment {

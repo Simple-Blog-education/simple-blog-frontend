@@ -9,7 +9,7 @@ import { useCallback, useEffect } from "preact/hooks";
 
 const posts = signal<Post[]>([])
 const pagination = signal<PaginationObject | null>(null);
-const searchParams = signal<postApi.PostSearchParams>({ page: 1, perPage: 2 });
+const searchParams = signal<postApi.PostSearchParams>({ page: 1, perPage: 10 });
 
 const fetchAction = createAsyncAction(postApi.getPosts);
 
@@ -38,5 +38,9 @@ export function usePosts() {
         searchParams.value = { ...searchParams.value, perPage, page: 1 };
     };
 
-    return { posts, pagination, loading: fetchAction.loading, error: fetchAction.error, goToPage, setPerPage }
+    const setSearchQuery = (query: string) => {
+        searchParams.value = { ...searchParams.value, query: query }
+    }
+
+    return { posts, pagination, loading: fetchAction.loading, error: fetchAction.error, goToPage, setPerPage, setSearchQuery }
 }

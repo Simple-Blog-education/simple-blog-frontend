@@ -3,14 +3,14 @@ import type { UUIDv4 } from "../lib/uuid";
 export const API_ENDPOINTS = {
   // Пользователи
   users: {
-    all: 'users/all',
+    all: 'users',
     byId: (id: UUIDv4) => `users/id/${id}`,
     byUsername: (username: string) => `users/username/${username}`
   },
 
   // Посты
   posts: {
-    all: 'posts/all',
+    all: 'posts',
     create: 'posts/new',
     byId: (id: UUIDv4) => `posts/${id}`,
   },
@@ -19,14 +19,14 @@ export const API_ENDPOINTS = {
   auth: {
     login: 'auth/login',
     signup: 'auth/signup',
-    changePassword: 'auth/change_password'
+    changePassword: 'auth/change_password',
+    me: 'auth/me'
   },
 
   // Комментарии
   comments: {
     create: 'comments/new',
-    byPost: (postId: UUIDv4) => `posts/${postId}/comments`,
-    byUser: (userId: UUIDv4) => `users/${userId}/comments`,
+    get: 'comments',
     byId: (id: UUIDv4) => `comments/${id}`
   },
 
