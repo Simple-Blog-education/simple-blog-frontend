@@ -4,9 +4,23 @@ import { useEffect } from "preact/hooks";
 import { useComments } from "../hooks/use_comments";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import { Button, Pagination, Text } from "@/shared/ui";
-export function CommentList({ post_id }: { post_id: UUIDv4 }) {
-    const { comments, pagination, loading, error, goToPage, setPostId } = useComments();
-    useEffect(() => { setPostId(post_id) }, [post_id])
+export function CommentList({ post_id, user_id }: { post_id?: UUIDv4, user_id?: UUIDv4 }) {
+    if (!post_id && !user_id) return <Text>Ошибка загрузки списка комментариев</Text>
+    const { comments, pagination, loading, error, goToPage, setPostId, setUserId } = useComments();
+    useEffect(() => {
+        if (post_id && user_id) {
+            setPostId(post_id)
+            setUserId(user_id)
+        }
+        else if (post_id && !user_id) {
+            setPostId(post_id)
+            setUserId(undefined);
+        }
+        else if (user_id && !post_id) {
+            setUserId(user_id);
+            setPostId(undefined);
+        }
+    }, [post_id, user_id])
     useEffect(() => { goToPage(1); }, [])
     return (
         <div className="comments">

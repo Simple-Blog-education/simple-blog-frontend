@@ -1,0 +1,11 @@
+.user-profile {
+    max-width: 80ch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.user-actions {
+    display: flex;
+    gap: var(--space-m);
+}

@@ -40,11 +40,11 @@ export function useComments() {
         searchParams.value = { ...searchParams.value, perPage, page: 1 };
     };
 
-    const setPostId = (post_id: UUIDv4) => {
+    const setPostId = (post_id?: UUIDv4) => {
         searchParams.value.post_id = post_id;
     }
 
-    const setUserId = (user_id: UUIDv4) => {
+    const setUserId = (user_id?: UUIDv4) => {
         searchParams.value.user_id = user_id;
     }
 
