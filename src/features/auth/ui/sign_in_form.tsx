@@ -32,7 +32,7 @@ export function SignInForm({ onSubmit, onSwitch }: SignInFormProps) {
         }
     };
 
-    return (<form onSubmit={handleSubmit}>
+    return (<form className="auth-form" onSubmit={handleSubmit}>
         <Input label="Имя пользователя" name="username" value={username} onInput={setUsername} required />
         <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />
         <Checkbox label="Показать пароль" name="showPassword" checked={visible} onChange={toggle} />

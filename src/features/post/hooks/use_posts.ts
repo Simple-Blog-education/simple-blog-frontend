@@ -42,5 +42,7 @@ export function usePosts() {
         searchParams.value = { ...searchParams.value, query: query }
     }
 
-    return { posts, pagination, loading: fetchAction.loading, error: fetchAction.error, goToPage, setPerPage, setSearchQuery }
+    const getSearchQuery = () => searchParams.value.query;
+
+    return { posts, pagination, loading: fetchAction.loading, error: fetchAction.error, goToPage, setPerPage, setSearchQuery, getSearchQuery }
 }
