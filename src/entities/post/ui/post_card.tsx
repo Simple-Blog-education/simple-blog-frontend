@@ -3,8 +3,9 @@ import type { Post } from '@/entities/post'
 import './post_card.css';
 import { Text } from '@/shared/ui/text/text';
 import { stripMarkdown } from '@/shared/lib/strip_markdown';
+import type { ComponentChildren } from 'preact';
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({ post, actionsSlot }: { post: Post, actionsSlot?: ComponentChildren }) {
     const isEdited = post.create_date.getTime() !== post.edit_date.getTime();
     const publishedDate = post.create_date;
     const editedDate = isEdited ? post.edit_date : null;
@@ -43,6 +44,9 @@ export function PostCard({ post }: { post: Post }) {
                         </time>
                     </>
                 )}
+            </div>
+            <div className="post-footer">
+                {actionsSlot}
             </div>
         </article>
     );

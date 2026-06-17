@@ -4,6 +4,7 @@ import { PostCard } from "@/entities/post";
 import './post_list.css'
 import { Button } from "@/shared/ui/button/button";
 import { Pagination, SearchBar } from "@/shared/ui";
+import { PostLikeButton } from "@/features/like";
 
 
 export function PostList() {
@@ -19,7 +20,9 @@ export function PostList() {
             }
             {
                 posts.value.map((post) =>
-                    <PostCard post={post} />
+                    <PostCard post={post} actionsSlot={
+                        <PostLikeButton postId={post.id} initialLikesCount={post.likes} />
+                    } />
                 )
             }
             {pagination.value && (
