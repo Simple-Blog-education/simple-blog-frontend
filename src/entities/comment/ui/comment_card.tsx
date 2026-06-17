@@ -6,7 +6,7 @@ export function CommentCard({ comment }: { comment: Comment }) {
     let localDate = formatCommentDate(comment.create_date)
     return (
         <div className="comment-card">
-            <Text variant="ui">{comment.user.username}</Text>
+            <Text variant="ui">{comment.username}</Text>
             <Text variant="ui-thin">{comment.text}</Text>
             <Text variant="code" className="date">{localDate}</Text>
         </div>

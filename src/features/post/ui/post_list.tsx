@@ -3,21 +3,28 @@ import { usePosts } from "../hooks/use_posts";
 import { PostCard } from "@/entities/post";
 import './post_list.css'
 import { Button } from "@/shared/ui/button/button";
+import { Pagination, SearchBar } from "@/shared/ui";
 
 
 export function PostList() {
-    const { posts, loading, error, loadPosts } = usePosts();
-    useEffect(() => { loadPosts(); }, [])
-
+    const { posts, pagination, loading, error, goToPage, setSearchQuery, getSearchQuery } = usePosts();
+    useEffect(() => { goToPage(1); }, [])
+    const currentSearch = getSearchQuery() ?? '';
     return (
         <section className="posts">
             {loading.value && <p>Загрузка...</p>}
-            {error.value && <><p className="error">{error.value}</p><Button onClick={() => loadPosts()}>Повторить</Button></>}
+            {error.value && <><p className="error">{error.value}</p><Button onClick={() => goToPage(pagination.value?.page ?? 1)}>Повторить</Button></>}
+            {
+                <SearchBar initialValue={currentSearch} onSearch={(query: string) => setSearchQuery(query)} />
+            }
             {
                 posts.value.map((post) =>
                     <PostCard post={post} />
                 )
             }
+            {pagination.value && (
+                <Pagination currentPage={pagination.value.page} total={pagination.value.total} perPage={pagination.value.perPage} onPageChange={goToPage} />
+            )}
         </section>
     )
 }

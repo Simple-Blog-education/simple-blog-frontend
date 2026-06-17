@@ -1,33 +1,30 @@
-import type { Comment, NewComment } from "@/entities/comment";
-import type { User } from "@/entities/user";
+import type { NewComment } from "@/entities/comment";
+import type { CommentPaginatedResponse } from "@/entities/comment/model/comment.types";
 import { API } from "@/shared/api";
 import { API_ENDPOINTS } from "@/shared/api/endpoints";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
-interface RawComment {
-    id: UUIDv4;
-    post_id: UUIDv4;
-    user_id: UUIDv4;
-    text: string;
-    create_date: Date;
+export interface CommentSearchParams {
+    post_id?: UUIDv4,
+    user_id?: UUIDv4,
+    page: number;
+    perPage: number;
 }
 
-export async function getComments(post_id: UUIDv4) {
-    const rawComments = await API.get<RawComment[]>(`posts/${post_id}/comments`);
-    const comments = [];
-    for (let rawComment of rawComments) {
-        let user = await API.get<User>(`users/${rawComment.user_id}`);
-        let comment: Comment = {
-            id: rawComment.id,
-            post_id: rawComment.post_id,
-            user: user,
-            text: rawComment.text,
-            create_date: new Date(rawComment.create_date)
+export async function getComments(params: CommentSearchParams) {
+    if (!params.post_id && !params.user_id) return;
+    const paginated = await API.get<CommentPaginatedResponse>(API_ENDPOINTS.comments.get, {
+        params: {
+            post_id: params.post_id,
+            user_id: params.user_id,
+            page: params.page,
+            per_page: params.perPage
         }
-        comments.push(comment);
+    });
+    for (let comment of paginated.data) {
+        comment.create_date = new Date(comment.create_date);
     }
-
-    return comments;
+    return paginated;
 }
 
 export async function createComment(data: NewComment) {

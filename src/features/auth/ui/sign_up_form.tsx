@@ -44,7 +44,7 @@ export function SignUpForm({ onSubmit, onSwitch }: SignUpFormProps) {
         }
     };
 
-    return (<form onSubmit={handleSubmit}>
+    return (<form className="auth-form" onSubmit={handleSubmit}>
         <Input label="Имя пользователя" name="username" value={username} onInput={setUsername} required />
         <Input label="Эл. почта" name="email" type="email" value={email} onInput={setEmail} required />
         <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />

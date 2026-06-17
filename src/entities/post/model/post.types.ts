@@ -1,4 +1,3 @@
-import type { User } from "@/entities/user";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
 export interface Post {
@@ -7,9 +6,15 @@ export interface Post {
     text: string;
     create_date: Date;
     edit_date: Date;
-    user_id: UUIDv4;
-    user?: User;
-    likesCount: number;
+    author_username: string,
+    author_name: string
+}
+
+export interface PostPaginatedResponse {
+    data: Post[];
+    total: number;
+    page: number;
+    per_page: number;
 }
 
 export interface NewPost {

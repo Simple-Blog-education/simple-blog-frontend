@@ -11,6 +11,7 @@ interface InputProps {
     disabled?: boolean;
     required?: boolean;
     visible?: boolean;
+    noLabel?: boolean;
     className?: string;
     onInput?: (value: string) => void;
 }
@@ -26,6 +27,7 @@ export function Input({
     disabled = false,
     required = false,
     visible = false,
+    noLabel = false,
     className = '',
     onInput
 }: InputProps) {
@@ -41,7 +43,7 @@ export function Input({
     }
 
     return (
-        <div className={`input-wrapper ${error && 'error'}`}>
+        <div className={`input-wrapper ${error && 'error'} ${noLabel ? 'no-label' : ''}`}>
             <label htmlFor={fieldId}>
                 {label}
                 {required && <span aria-hidden="true"> *</span>}

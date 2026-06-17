@@ -2,6 +2,7 @@ import { setUser } from "@/features/auth/model/auth.store"
 import { API } from "@/shared/api"
 import type { User } from "@/entities/user"
 import type { UUIDv4 } from "@/shared/lib/uuid"
+import { API_ENDPOINTS } from "@/shared/api/endpoints"
 
 export type AuthCredentials = {
     username: string,
@@ -21,7 +22,7 @@ export type SignInData = {
 }
 
 export async function signIn(data: AuthCredentials) {
-    let loginData: SignInData = await API.post('auth/login', data);
+    let loginData: SignInData = await API.post(API_ENDPOINTS.auth.login, data);
     localStorage.setItem('token', loginData.token);
     let user: User = await API.get(`users/${loginData.user_id}`);
     console.log(user);
@@ -30,7 +31,7 @@ export async function signIn(data: AuthCredentials) {
 }
 
 export async function signUp(data: SignUpData) {
-    let success = await API.post('auth/signup', data);
+    let success = await API.post(API_ENDPOINTS.auth.signup, data);
     if (success == "Success") console.log("Sign up successful");
     else return false;
     return true;

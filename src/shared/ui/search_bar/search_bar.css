@@ -1,0 +1,5 @@
+.search-bar {
+    display: flex;
+    gap: var(--space-s);
+    align-items: stretch;
+}

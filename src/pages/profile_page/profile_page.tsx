@@ -1,9 +1,11 @@
 import { UserInfo } from "@/entities/user/ui/user_info";
 import { currentUser } from "@/features/auth";
+import { CommentList } from "@/features/comment/ui/comment_list";
 import { useUser } from "@/features/user/hooks/use_user";
 import { AppLink, Heading, Text } from "@/shared/ui";
 import { useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
+import './profile_page.css'
 
 export function ProfilePage() {
     const { user, loadUser, loading, error } = useUser();
@@ -15,9 +17,17 @@ export function ProfilePage() {
     return (
         <>
             <Heading level={1}>Профиль пользователя {user.value.username}</Heading>
-            <UserInfo user={user.value} />
-            {currentUser.value && currentUser.value.username === user.value.username && <><AppLink href={`/profile/${currentUser.value.username}/edit`}>Редактировать профиль</AppLink>
-                <AppLink href={`/profile/${currentUser.value.username}/change_password`}>Сменить пароль</AppLink></>}
+            <section className="user-profile">
+                <UserInfo user={user.value} />
+                {currentUser.value && currentUser.value.username === user.value.username &&
+                    <section className="user-actions">
+                        <AppLink href={`/profile/${currentUser.value.username}/edit`}>Редактировать профиль</AppLink>
+                        <AppLink href={`/profile/${currentUser.value.username}/change_password`}>Сменить пароль</AppLink>
+                    </section>
+                }
+                <Heading level={2}>Комментарии пользователя</Heading>
+                <CommentList user_id={user.value.id}></CommentList>
+            </section>
         </>
     )
 }
