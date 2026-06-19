@@ -1,17 +1,18 @@
 import { currentUser } from "@/features/auth";
 import { createAsyncAction } from "@/shared/lib/create_async_action";
 import type { UUIDv4 } from "@/shared/lib/uuid";
-import { signal } from "@preact/signals";
+import { signal, useSignal } from "@preact/signals";
 
 import * as likeApi from '../api/like.api';
 import { useEffect } from "preact/hooks";
 
 export function useLikePost(postId: UUIDv4, initialLikesCount: number) {
-    const liked = signal(false);
-    const likesCount = signal(initialLikesCount);
+    const liked = useSignal(false);
+    const likesCount = useSignal(initialLikesCount);
 
     const toggleAction = createAsyncAction(async () => {
         if (!currentUser.value) return;
+        console.log("liked value: " + liked.value);
         if (liked.value) {
             await likeApi.unlikePost(postId);
             liked.value = false;
@@ -29,6 +30,7 @@ export function useLikePost(postId: UUIDv4, initialLikesCount: number) {
     useEffect(() => {
         if (!currentUser.value) return;
         fetchStatus.execute(postId).then(isLiked => {
+            console.log(isLiked);
             if (isLiked !== undefined) liked.value = isLiked;
         });
     }, [postId])

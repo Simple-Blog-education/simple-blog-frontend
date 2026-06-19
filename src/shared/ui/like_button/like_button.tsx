@@ -1,4 +1,7 @@
 import { Button } from "../button/button"
+import { Icon } from "../icon/icon"
+
+import './like_button.css';
 
 interface LikeButtonProps {
     active: boolean,
@@ -16,6 +19,11 @@ export function LikeButton({
     disabled
 }: LikeButtonProps) {
     return (
-        <Button variant="outline" onClick={onClick} disabled={disabled || loading} loading={loading}>{active ? 'O' : 'X'} {count}</Button>
+        <Button
+            className="like-button"
+            variant="outline"
+            onClick={onClick}
+            disabled={disabled || loading}
+            loading={loading}><Icon name="heart" size={16} filled={active} /> {' '} {count}</Button>
     )
 }
