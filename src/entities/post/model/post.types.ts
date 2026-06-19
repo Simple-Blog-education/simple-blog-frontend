@@ -7,7 +7,9 @@ export interface Post {
     create_date: Date;
     edit_date: Date;
     author_username: string,
-    author_name: string
+    author_name: string,
+    likes: number,
+    is_liked: boolean
 }
 
 export interface PostPaginatedResponse {
