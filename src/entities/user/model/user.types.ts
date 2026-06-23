@@ -8,4 +8,5 @@ export interface User {
     last_name?: string | undefined;
     reg_date: Date;
     role: 'User' | 'Admin';
+    avatar_url?: string | undefined;
 }

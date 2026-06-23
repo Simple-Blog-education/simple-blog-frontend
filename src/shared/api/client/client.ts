@@ -1,6 +1,7 @@
 import { buildUrl, type QueryParams } from "@/shared/lib/build_url";
 
 const BASE_URL = "http://localhost:8000/api/v1";
+const UPLOAD_URL = "http://localhost:8000";
 
 interface RequestOptions {
     headers?: Record<string, string>;
@@ -11,6 +12,7 @@ interface RequestOptions {
 class APIClient {
     private baseURL: string;
     private defaultHeaders: Record<string, string>
+    private uploadURL = UPLOAD_URL;
 
     constructor(baseURL: string, defaultHeaders?: Record<string, string>) {
         this.baseURL = baseURL;
@@ -18,6 +20,10 @@ class APIClient {
             'Content-Type': 'application/json',
             ...defaultHeaders
         };
+    }
+
+    getUploadURL(): string {
+        return this.uploadURL;
     }
 
     private getAuthHeaders(): Record<string, string> {
@@ -90,6 +96,51 @@ class APIClient {
     delete<T = any>(path: string, config?: RequestOptions) {
         const fullPath = buildUrl(path, config?.params);
         return this.request<T>('DELETE', fullPath, { headers: config?.headers });
+    }
+
+    async upload<T = any>(path: string, file: File, fieldName = 'avatar'): Promise<T> {
+        const url = `${this.baseURL}/${path}`;
+        const formData = new FormData();
+        formData.append(fieldName, file);
+
+        const headers = {
+            ...this.getAuthHeaders(),
+        }
+
+        const config: RequestInit = {
+            method: 'POST',
+            headers,
+            body: formData
+        };
+
+        let response: Response;
+
+        try {
+            response = await fetch(url, config);
+        }
+        catch (err: any) {
+            throw new Error(`Ошибка сети: ${err.message}`);
+        }
+
+        if (!response.ok) {
+            let errorMsg = response.statusText;
+            try {
+                const errorBody = await response.json();
+                errorMsg = errorBody.message || errorBody.detail || errorMsg;
+            }
+            catch { }
+            if (response.status === 401) {
+                localStorage.removeItem('token');
+                window.location.href = '/auth';
+            }
+            throw new Error(errorMsg);
+        }
+
+        if (response.status === 204 || response.headers.get('content-length') === '0') {
+            return null as T;
+        }
+
+        return response.json();
     }
 }
 

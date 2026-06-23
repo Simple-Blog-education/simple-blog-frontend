@@ -2,6 +2,7 @@ import { currentUser, isAuthenticated, logout } from "@/features/auth";
 import { AppLink } from "@/shared/ui";
 import { Button } from "@/shared/ui";
 import "./header.css"
+import { UserAvatar } from "@/shared/ui/user_avatar/user_avatar";
 export function Header() {
     let authorized = isAuthenticated.value;
     return <>
@@ -10,7 +11,7 @@ export function Header() {
             <nav>
                 {!authorized ? <AppLink href="/auth" variant="panel">Авторизация</AppLink> :
                     <>
-                        <AppLink href={`/profile/${currentUser.value?.username}`} variant="panel">Профиль</AppLink>
+                        <AppLink href={`/profile/${currentUser.value?.username}`} variant="panel"><UserAvatar user={currentUser.value} /></AppLink>
                         <Button onClick={() => {
                             logout();
                             alert("Вы вышли из системы");
