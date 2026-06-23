@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   users: {
     all: 'users',
     byId: (id: UUIDv4) => `users/id/${id}`,
+    putById: (id: UUIDv4) => `users/${id}`,
     byUsername: (username: string) => `users/username/${username}`
   },
 

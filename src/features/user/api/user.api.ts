@@ -16,7 +16,7 @@ export async function getUserByUsername(username: string) {
 
 export async function putUser(user: Partial<User>) {
     if (!user.id) return;
-    return await API.put<Partial<User>>(API_ENDPOINTS.users.byId(user.id), {
+    return await API.put<Partial<User>>(API_ENDPOINTS.users.putById(user.id), {
         email: user.email,
         first_name: user.first_name,
         last_name: user.last_name
