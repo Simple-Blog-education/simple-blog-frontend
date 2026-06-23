@@ -3,6 +3,8 @@ import { useEffect, useState } from "preact/hooks";
 import { useProfileForm } from "../hooks/use_profile_form";
 import { AvatarUploader } from "./avatar_uploader";
 
+import './edit_profile_form.css';
+
 export function EditProfileForm() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -31,7 +33,7 @@ export function EditProfileForm() {
     if (isFetching.value) return <Text variant="ui">Загрузка...</Text>
     if (fetchError.value) return <Text variant="ui">Ошибка загрузки: {error.value}</Text>
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={"edit-profile-form"} onSubmit={handleSubmit}>
             <AvatarUploader />
             <Input name="firstName" label="Имя" value={firstName} onInput={setFirstName} />
             <Input name="lastName" label="Фамилия" value={lastName} onInput={setLastName} />

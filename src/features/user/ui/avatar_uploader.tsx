@@ -4,6 +4,8 @@ import { currentUser } from "@/features/auth";
 import { UserAvatar } from "@/shared/ui/user_avatar/user_avatar";
 import { Button } from "@/shared/ui";
 
+import './avatar_uploader.css';
+
 export function AvatarUploader() {
     const { upload, loading, error } = useUploadAvatar();
 
