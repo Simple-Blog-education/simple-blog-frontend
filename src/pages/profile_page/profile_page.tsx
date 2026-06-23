@@ -6,6 +6,7 @@ import { AppLink, Heading, Text } from "@/shared/ui";
 import { useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import './profile_page.css'
+import { UserAvatar } from "@/shared/ui/user_avatar/user_avatar";
 
 export function ProfilePage() {
     const { user, loadUser, loading, error } = useUser();
@@ -18,6 +19,7 @@ export function ProfilePage() {
         <>
             <Heading level={1}>Профиль пользователя {user.value.username}</Heading>
             <section className="user-profile">
+                <UserAvatar user={user.value} />
                 <UserInfo user={user.value} />
                 {currentUser.value && currentUser.value.username === user.value.username &&
                     <section className="user-actions">
