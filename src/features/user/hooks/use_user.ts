@@ -10,7 +10,6 @@ const fetchAction = createAsyncAction(userApi.getUserByUsername);
 export function useUser() {
     const loadUser = async (username: string) => {
         const data = await fetchAction.execute(username);
-        console.log(data);
         if (data) user.value = data;
     }
 

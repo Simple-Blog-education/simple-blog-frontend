@@ -12,11 +12,17 @@ export function AuthContainer() {
     const { route } = useLocation();
 
     const handleSignIn = useCallback(async (data: AuthCredentials) => {
-        const success = await signIn(data);
-        if (success) {
-            route('/', true);
+        try {
+            const success = await signIn(data);
+            if (success) {
+                route('/', true);
+            }
+            return success;
         }
-        return success;
+        catch {
+            return false;
+        }
+
     }, [route]);
 
     const handleSignUp = useCallback(async (data: SignUpData) => {

@@ -22,19 +22,27 @@ export type SignInData = {
 }
 
 export async function signIn(data: AuthCredentials) {
-    let loginData: SignInData = await API.post(API_ENDPOINTS.auth.login, data);
-    localStorage.setItem('token', loginData.token);
-    let user: User = await API.get(`users/${loginData.user_id}`);
-    console.log(user);
-    setUser(user);
-    return true;
+    try {
+        let loginData: SignInData = await API.post(API_ENDPOINTS.auth.login, data);
+        localStorage.setItem('token', loginData.token);
+        let user: User = await API.get(`users/id/${loginData.user_id}`);
+        setUser(user);
+        return true;
+    }
+    catch {
+        return false;
+    }
 }
 
 export async function signUp(data: SignUpData) {
-    let success = await API.post(API_ENDPOINTS.auth.signup, data);
-    if (success == "Success") console.log("Sign up successful");
-    else return false;
-    return true;
+    try {
+        let signedUser: User = await API.post(API_ENDPOINTS.auth.signup, data);
+        if (signedUser) return true;
+        return false;
+    }
+    catch {
+        return false;
+    }
 }
 
 export async function getCurrentUser() {
