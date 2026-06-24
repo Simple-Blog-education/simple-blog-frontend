@@ -7,6 +7,7 @@ import { currentUser, isAuthenticated } from "@/features/auth";
 import { getCurrentUser } from "@/features/auth/api/auth.api";
 import { useEffect } from "preact/hooks";
 import { ProtectedRoute } from "@/shared/ui";
+import { AdminRoute } from "@/shared/ui/admin_route/admin_route";
 
 function wrapWithLayout(Component: any) {
   return (props: any) => (
@@ -38,8 +39,8 @@ export function App() {
       <ErrorBoundary>
         <Router>
           <Route path="/" component={wrapWithLayout(PostsPage)} />
-          <ProtectedRoute path="/posts/:id/edit" component={wrapWithLayout(EditPostPage)} />
-          <ProtectedRoute path="/posts/new" component={wrapWithLayout(CreatePostPage)} />
+          <AdminRoute path="/posts/:id/edit" component={wrapWithLayout(EditPostPage)} />
+          <AdminRoute path="/posts/new" component={wrapWithLayout(CreatePostPage)} />
           <ProtectedRoute path="/profile/:username/edit" component={wrapWithLayout(EditProfilePage)} />
           <ProtectedRoute path="/profile/:username/change_password" component={wrapWithLayout(ChangePasswordPage)} />
           <Route path="/profile/:username" component={wrapWithLayout(ProfilePage)} />

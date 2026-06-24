@@ -10,6 +10,7 @@ import { formatPostDate } from "@/shared/lib/format_post_date";
 import { CommentList } from "@/features/comment/ui/comment_list";
 import { CommentForm } from "@/features/comment/ui/comment_form";
 import { currentUser } from "@/features/auth";
+import { isAdmin } from "@/shared/lib/permissions";
 
 export function PostDetails() {
     const route = useRoute();
@@ -37,7 +38,7 @@ export function PostDetails() {
         <section class="post-details">
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
             <Markdown content={text} />
-            <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>
+            {isAdmin.value && <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>}
             <Heading level={2} variant="display">Комментарии</Heading>
             {currentUser.value && <CommentForm userId={currentUser.value.id} postId={postId} />}
             <CommentList post_id={postId} />
