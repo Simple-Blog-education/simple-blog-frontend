@@ -45,10 +45,8 @@ export function PostForm({ postId }: PostFormProps) {
     return (
         <form className="post-form" onSubmit={handleSubmit}>
             <Input label="Заголовок" value={title} onInput={setTitle} required />
-            <div className="editor">
-                <Textarea name="editor-textarea" value={content} onInput={setContent} required />
-                <Markdown content={content} previewMode={true} />
-            </div>
+            <Textarea name="editor-textarea" value={content} onInput={setContent} required />
+            <Markdown content={content} previewMode={true} />
             {error.value && <Text className="error">{error.value}</Text>}
             <Button type="submit" loading={loading.value}>
                 {postId ? "Сохранить" : "Опубликовать"}

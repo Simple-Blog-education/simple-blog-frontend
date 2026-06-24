@@ -1,35 +1,38 @@
 .post-form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 75%;
     max-width: 160ch;
+    gap: var(--space-m);
 }
 
 .post-form>button {
     align-self: flex-end;
 }
 
-.editor {
-    display: flex;
-    gap: var(--space-m);
+.post-form .textarea-wrapper {
+    grid-row: 2 / 3;
     min-height: 40ch;
 }
 
-.editor>.textarea-wrapper {
-    flex: 1;
-}
-
-.editor textarea {
+.post-form .textarea-wrapper textarea {
     height: 100%;
 }
 
-.editor .markdown-body {
+.post-form button {
+    grid-row: 3 / 4;
+}
+
+.post-form .markdown-body {
     border: 1px solid var(--color-border);
     background-color: var(--color-input);
     border-radius: var(--space-xs);
     padding: var(--space-s);
     flex: 1;
+    min-height: 40ch;
     box-sizing: border-box;
     max-height: 120ch;
     overflow: scroll;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
 }

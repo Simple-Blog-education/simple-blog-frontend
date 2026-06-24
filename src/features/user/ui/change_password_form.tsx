@@ -2,6 +2,8 @@ import { Button, Input, Text } from "@/shared/ui";
 import { useState } from "preact/hooks";
 import { useChangePassword } from "../hooks/use_change_password";
 
+import './change_password_form.css';
+
 export function ChangePasswordForm() {
     const { submit, loading, error } = useChangePassword();
 
@@ -17,7 +19,7 @@ export function ChangePasswordForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={"change-password-form"} onSubmit={handleSubmit}>
             <Input name="oldPassword" label="Текущий пароль" type="password" value={oldPassword} onInput={setOldPassword} />
             <Input name="newPassword" label="Новый пароль" type="password" value={newPassword} onInput={setNewPassword} />
             <Button type="submit" loading={loading.value}>Сменить</Button>

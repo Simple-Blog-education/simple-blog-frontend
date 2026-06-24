@@ -41,6 +41,7 @@ export function PostDetails() {
             {isAdmin.value && <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>}
             <Heading level={2} variant="display">Комментарии</Heading>
             {currentUser.value && <CommentForm userId={currentUser.value.id} postId={postId} />}
+            {!currentUser.value && <Text>Войдите, чтобы оставить комментарий!</Text>}
             <CommentList post_id={postId} />
         </section >
     )
