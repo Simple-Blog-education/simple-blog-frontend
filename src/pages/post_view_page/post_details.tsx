@@ -4,8 +4,7 @@ import './post_details.css'
 import { Heading, Markdown } from "@/shared/ui";
 import { usePost } from "@/features/post";
 import type { UUIDv4 } from "@/shared/lib/uuid";
-import { Text } from "@/shared/ui";
-import { Button } from "@/shared/ui/button/button";
+import { Text, Notification, Button } from "@/shared/ui";
 import { formatPostDate } from "@/shared/lib/format_post_date";
 import { CommentList } from "@/features/comment/ui/comment_list";
 import { CommentForm } from "@/features/comment/ui/comment_form";
@@ -23,7 +22,7 @@ export function PostDetails() {
     if (loading.value) return <section class="post-details"><Text variant="ui">Загрузка...</Text></section>;
     if (error.value) return (
         <section class="post-details">
-            <Text variant="body">{error.value}</Text>
+            <Notification variant="error" text={error.value} />
             <Button onClick={() => postId && loadPost(postId)}>Повторить</Button>
         </section>
     );

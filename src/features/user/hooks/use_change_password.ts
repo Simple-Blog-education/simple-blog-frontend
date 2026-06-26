@@ -6,8 +6,8 @@ const changeAction = createAsyncAction(changePassword);
 
 export function useChangePassword() {
     useEffect(() => changeAction.reset(), []);
-    const submit = (data: PasswordChangeset) => {
-        changeAction.execute(data);
+    const submit = async (data: PasswordChangeset) => {
+        await changeAction.execute(data);
     }
     return {
         submit,

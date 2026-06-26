@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 import { type SignUpData } from "@/features/auth/api/auth.api";
-import { Button, Checkbox, Input, Text } from "@/shared/ui";
+import { Button, Checkbox, Input, Text, Notification } from "@/shared/ui";
 import { usePasswordVisibility } from "../hooks/use_password_visibility";
 
 interface SignUpFormProps {
@@ -50,7 +50,7 @@ export function SignUpForm({ onSubmit, onSwitch }: SignUpFormProps) {
         <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />
         <Input label="Повторите пароль" name="repeatPassword" type="password" value={repeatPassword} onInput={setRepeatPassword} visible={visible} required />
         <Checkbox label="Показать пароль" name="showPassword" checked={visible} onChange={toggle} />
-        {error && <p className="error">{error}</p>}
+        <Notification variant="error" text={error} />
         <Button type="submit" loading={loading}>Зарегистрироваться</Button>
         <Text variant="ui">Есть аккаунт? <Button variant="outline" onClick={onSwitch}>Войти</Button></Text>
     </form>);

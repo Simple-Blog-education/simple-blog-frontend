@@ -1,7 +1,7 @@
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import { useState } from "preact/hooks";
 import { useCommentForm } from "../hooks/use_comment_form";
-import { Button, Text } from "@/shared/ui";
+import { Button, Notification } from "@/shared/ui";
 import { Textarea } from "@/shared/ui/textarea/textarea";
 
 import './comment_form.css'
@@ -29,7 +29,7 @@ export function CommentForm({ postId, userId }: CommentFormProps) {
         <form className="comment-form" onSubmit={handleSubmit}>
             <Textarea name="commentText" label="Комментарий" value={text} onInput={setText} rows={5} />
             <Button type="submit" loading={loading.value}>Отправить</Button>
-            {error.value && <Text variant="error">{error.value}</Text>}
+            <Notification variant="error" text={error.value} />
         </form>
     )
 }

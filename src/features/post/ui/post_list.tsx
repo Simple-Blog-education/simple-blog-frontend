@@ -3,7 +3,7 @@ import { usePosts } from "../hooks/use_posts";
 import { PostCard } from "@/entities/post";
 import './post_list.css'
 import { Button } from "@/shared/ui/button/button";
-import { Pagination, SearchBar } from "@/shared/ui";
+import { Notification, Pagination, SearchBar } from "@/shared/ui";
 import { PostLikeButton } from "@/features/like";
 
 
@@ -14,7 +14,7 @@ export function PostList() {
     return (
         <section className="posts">
             {loading.value && <p>Загрузка...</p>}
-            {error.value && <><p className="error">{error.value}</p><Button onClick={() => goToPage(pagination.value?.page ?? 1)}>Повторить</Button></>}
+            {error.value && <><Notification variant="error" text={error.value} /><Button onClick={() => goToPage(pagination.value?.page ?? 1)}>Повторить</Button></>}
             {
                 <SearchBar initialValue={currentSearch} onSearch={(query: string) => setSearchQuery(query)} />
             }

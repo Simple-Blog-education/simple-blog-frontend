@@ -4,12 +4,15 @@ import { SignUpForm } from "./sign_up_form";
 import './auth_container.css'
 import { useLocation } from "preact-iso";
 import { signIn, signUp, type AuthCredentials, type SignUpData } from "../api/auth.api";
+import { Notification } from "@/shared/ui";
+import { useSignal } from "@preact/signals";
 
 type CurrentForm = 'signin' | 'signup';
 
 export function AuthContainer() {
     const [currentForm, setCurrentForm] = useState<CurrentForm>("signup")
     const { route } = useLocation();
+    const [infoText, setInfoText] = useState<string | null>(null);
 
     const handleSignIn = useCallback(async (data: AuthCredentials) => {
         try {
@@ -39,6 +42,7 @@ export function AuthContainer() {
 
         if (success) {
             setCurrentForm('signin');
+            setInfoText('Регистрация успешна, войдите в систему');
         }
 
         return success;
@@ -46,6 +50,7 @@ export function AuthContainer() {
     return (
         <section className={"auth"}>
             <h1>{currentForm == "signin" ? "Вход" : "Регистрация"}</h1>
+            <Notification variant="info" text={infoText} />
             {currentForm == "signin" ?
                 <SignInForm onSubmit={handleSignIn} onSwitch={() => setCurrentForm('signup')}></SignInForm> :
                 <SignUpForm onSubmit={handleSignUp} onSwitch={() => setCurrentForm('signin')}></SignUpForm>}

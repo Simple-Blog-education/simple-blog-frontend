@@ -1,6 +1,6 @@
 import { useLocation } from "preact-iso";
 import { useDeletePost } from "../hooks/use_delete_post";
-import { Button, Text } from "@/shared/ui";
+import { Button, Notification, Text } from "@/shared/ui";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
 export function DeletePostButton({ postId }: { postId: UUIDv4 }) {
@@ -18,7 +18,7 @@ export function DeletePostButton({ postId }: { postId: UUIDv4 }) {
     return (
         <>
             <Button onClick={handleDelete} loading={loading.value} variant="danger">Удалить</Button>
-            {error.value && <Text variant="error">{error.value}</Text>}
+            <Notification variant="error" text={error.value} />
         </>
     );
 }

@@ -3,7 +3,7 @@ import { useLocation } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
 import { usePostForm } from "../hooks/use_post_form";
 import { currentUser } from "@/features/auth";
-import { Button, Input, Markdown, Text } from "@/shared/ui";
+import { Button, Input, Markdown, Notification, Text } from "@/shared/ui";
 
 import './post_form.css'
 import { Textarea } from "@/shared/ui/textarea/textarea";
@@ -47,7 +47,7 @@ export function PostForm({ postId }: PostFormProps) {
             <Input label="Заголовок" value={title} onInput={setTitle} required />
             <Textarea name="editor-textarea" value={content} onInput={setContent} required />
             <Markdown content={content} previewMode={true} />
-            {error.value && <Text className="error">{error.value}</Text>}
+            <Notification variant="error" text={error.value} />
             <Button type="submit" loading={loading.value}>
                 {postId ? "Сохранить" : "Опубликовать"}
             </Button>

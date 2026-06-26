@@ -1,0 +1,24 @@
+.notification-wrapper {
+    padding: var(--space-m);
+    border-radius: var(--space-xs);
+    font-size: var(--text-ui);
+    border: 1px solid;
+}
+
+.notification-wrapper.error {
+    background-color: var(--banner-error-bg);
+    color: var(--banner-error-text);
+    border-color: var(--banner-error-border);
+}
+
+.notification-wrapper.warning {
+    background-color: var(--banner-warning-bg);
+    color: var(--banner-warning-text);
+    border-color: var(--banner-warning-border);
+}
+
+.notification-wrapper.info {
+    background-color: var(--banner-info-bg);
+    color: var(--banner-info-text);
+    border-color: var(--banner-info-border);
+}

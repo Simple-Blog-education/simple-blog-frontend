@@ -3,7 +3,7 @@ import "./comment_list.css"
 import { useEffect } from "preact/hooks";
 import { useComments } from "../hooks/use_comments";
 import type { UUIDv4 } from "@/shared/lib/uuid";
-import { Button, Pagination, Text } from "@/shared/ui";
+import { Button, Pagination, Text, Notification } from "@/shared/ui";
 import { CommentLikeButton } from "@/features/like";
 export function CommentList({ post_id, user_id }: { post_id?: UUIDv4, user_id?: UUIDv4 }) {
     if (!post_id && !user_id) return <Text>Ошибка загрузки списка комментариев</Text>
@@ -26,7 +26,7 @@ export function CommentList({ post_id, user_id }: { post_id?: UUIDv4, user_id?: 
     return (
         <div className="comments">
             {loading.value && <Text variant="ui">Загрузка...</Text>}
-            {error.value && <><Text className="error">{error.value}</Text><Button onClick={() => goToPage(1)}>Повторить</Button></>}
+            {error.value && <><Notification variant="error" text={error.value} /><Button onClick={() => goToPage(1)}>Повторить</Button></>}
             {comments.value.length == 0 && <Text variant="ui">Комментариев пока нет!</Text>}
             {
                 comments.value.map((comment) => <CommentCard comment={comment} actionsSlot={

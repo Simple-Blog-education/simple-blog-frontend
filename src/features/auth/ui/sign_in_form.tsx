@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 import type { AuthCredentials } from "../api/auth.api";
-import { Button, Checkbox, Input, Text } from "@/shared/ui";
+import { Button, Checkbox, Input, Text, Notification } from "@/shared/ui";
 import { usePasswordVisibility } from "../hooks/use_password_visibility";
 
 interface SignInFormProps {
@@ -36,7 +36,7 @@ export function SignInForm({ onSubmit, onSwitch }: SignInFormProps) {
         <Input label="Имя пользователя" name="username" value={username} onInput={setUsername} required />
         <Input label="Пароль" name="password" type="password" value={password} onInput={setPassword} visible={visible} required />
         <Checkbox label="Показать пароль" name="showPassword" checked={visible} onChange={toggle} />
-        {error && <p className="error">{error}</p>}
+        <Notification variant="error" text={error} />
         <Button type="submit" loading={loading}>Войти</Button>
         <Text variant="ui">Нет аккаунта? <Button variant="outline" onClick={onSwitch}>Зарегистрироваться</Button></Text>
     </form>);

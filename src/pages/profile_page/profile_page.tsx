@@ -2,7 +2,7 @@ import { UserInfo } from "@/entities/user/ui/user_info";
 import { currentUser } from "@/features/auth";
 import { CommentList } from "@/features/comment/ui/comment_list";
 import { useUser } from "@/features/user/hooks/use_user";
-import { AppLink, Heading, Text } from "@/shared/ui";
+import { AppLink, Heading, Text, Notification } from "@/shared/ui";
 import { useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import './profile_page.css'
@@ -14,7 +14,7 @@ export function ProfilePage() {
     const username = route.params.username;
     useEffect(() => { loadUser(username) }, [username]);
     if (loading.value) return <Text variant="ui">Загрузка...</Text>
-    if (error.value || user.value === undefined) return <Text>Ошибка загрузки пользователя: {error.value}</Text>
+    if (error.value || user.value === undefined) return <Notification variant="error" text={error.value ? "Ошибка загрузки пользователя:" + error.value : ''} />
     return (
         <>
             <Heading level={1}>Профиль пользователя {user.value.username}</Heading>

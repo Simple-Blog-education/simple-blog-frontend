@@ -2,7 +2,7 @@ import { useRef, useState } from "preact/hooks";
 import { useUploadAvatar } from "../hooks/use_upload_avatar";
 import { currentUser } from "@/features/auth";
 import { UserAvatar } from "@/shared/ui/user_avatar/user_avatar";
-import { Button } from "@/shared/ui";
+import { Button, Notification } from "@/shared/ui";
 
 import './avatar_uploader.css';
 
@@ -11,6 +11,7 @@ export function AvatarUploader() {
 
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [infoText, setInfoText] = useState('');
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -32,6 +33,7 @@ export function AvatarUploader() {
         setSelectedFile(null);
         setPreviewUrl(null);
         if (fileInputRef.current) fileInputRef.current.value = "";
+        if (!error.value) setInfoText('Регистрация успешна, войдите в систему');
     }
 
     return (
@@ -52,8 +54,8 @@ export function AvatarUploader() {
                     </Button>
                 )
             }
-
-            {error.value && <p className={"error"}>{error.value}</p>}
+            <Notification variant="error" text={error.value} />
+            <Notification variant="info" text={infoText} />
         </div>
     )
 

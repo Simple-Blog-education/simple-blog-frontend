@@ -40,6 +40,19 @@
     --heading-4: 1.25rem;
     --heading-5: 1.15rem;
     --heading-6: 1.1rem;
+
+    /* семантика для баннера */
+    --banner-info-bg: #e3f2fd;
+    --banner-info-text: #0d47a1;
+    --banner-info-border: #90caf9;
+
+    --banner-warning-bg: #fff3e0;
+    --banner-warning-text: #e65100;
+    --banner-warning-border: #ffcc80;
+
+    --banner-error-bg: #ffebee;
+    --banner-error-text: #b71c1c;
+    --banner-error-border: #ef9a9a;
 }
 
 /* Тёмная тема */
@@ -53,6 +66,19 @@
     --color-border: #444;
     --color-muted: #a0a0a0;
     --color-error: #ef5350;
+
+    /* семантика для баннера */
+    --banner-info-bg: #1a237e;
+    --banner-info-text: #bbdefb;
+    --banner-info-border: #5c6bc0;
+
+    --banner-warning-bg: #4e342e;
+    --banner-warning-text: #ffe0b2;
+    --banner-warning-border: #8d6e63;
+
+    --banner-error-bg: #b71c1c;
+    --banner-error-text: #ffcdd2;
+    --banner-error-border: #e57373;
 }
 
 /* Системная тема (если пользователь не выбрал вручную) */
