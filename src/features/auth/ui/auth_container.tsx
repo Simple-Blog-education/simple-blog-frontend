@@ -5,7 +5,6 @@ import './auth_container.css'
 import { useLocation } from "preact-iso";
 import { signIn, signUp, type AuthCredentials, type SignUpData } from "../api/auth.api";
 import { Notification } from "@/shared/ui";
-import { useSignal } from "@preact/signals";
 
 type CurrentForm = 'signin' | 'signup';
 

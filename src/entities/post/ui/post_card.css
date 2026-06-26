@@ -9,3 +9,9 @@
     gap: var(--space-s);
     width: 100%;
 }
+
+.post_card_author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+}

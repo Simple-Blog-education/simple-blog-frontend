@@ -1,6 +1,6 @@
 import { useLocation } from "preact-iso";
 import { useDeletePost } from "../hooks/use_delete_post";
-import { Button, Notification, Text } from "@/shared/ui";
+import { Button, Notification } from "@/shared/ui";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 
 export function DeletePostButton({ postId }: { postId: UUIDv4 }) {

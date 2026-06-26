@@ -1,5 +1,6 @@
 import type { ComponentChildren } from "preact";
 import './app_link.css'
+import { cn } from "@/shared/lib/cn";
 
 type LinkStyle = 'default' | 'panel' | 'page' | 'inline';
 
@@ -19,10 +20,11 @@ export function AppLink({
     href,
     variant = 'default',
     external,
-    children
+    children,
+    className
 }: AppLinkProps) {
     const externalLink = external ?? isExternal(href);
-    const classes = `${variant}`
+    const classes = cn(variant, className);
 
     if (externalLink) {
         return (

@@ -7,6 +7,7 @@ export interface Post {
     create_date: Date;
     edit_date: Date;
     author_username: string,
+    author_avatar: string,
     author_name: string,
     likes: number,
     is_liked: boolean

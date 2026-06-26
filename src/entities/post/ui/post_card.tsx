@@ -4,6 +4,7 @@ import './post_card.css';
 import { Text } from '@/shared/ui/text/text';
 import { stripMarkdown } from '@/shared/lib/strip_markdown';
 import type { ComponentChildren } from 'preact';
+import { UserAvatar } from '@/shared/ui/user_avatar/user_avatar';
 
 export function PostCard({ post, actionsSlot }: { post: Post, actionsSlot?: ComponentChildren }) {
     const isEdited = post.create_date.getTime() !== post.edit_date.getTime();
@@ -22,6 +23,11 @@ export function PostCard({ post, actionsSlot }: { post: Post, actionsSlot?: Comp
             </AppLink>
 
             <Text variant='body'>{previewText}</Text>
+            <AppLink className='post_card_author' href={`profile/${post.author_username}`}>
+                <UserAvatar user={{ username: post.author_username, avatar_url: post.author_avatar }} />
+                <Text variant='ui'>Автор: {post.author_name ?? post.author_username}</Text>
+            </AppLink>
+
 
             <div className="time_bar">
                 <time dateTime={publishedDate.toISOString()}>
