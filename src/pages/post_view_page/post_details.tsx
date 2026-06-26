@@ -1,7 +1,7 @@
 import { useEffect } from "preact/hooks";
 import { useLocation, useRoute } from "preact-iso";
 import './post_details.css'
-import { Heading, Markdown } from "@/shared/ui";
+import { AppLink, Heading, Markdown, UserAvatar } from "@/shared/ui";
 import { usePost } from "@/features/post";
 import type { UUIDv4 } from "@/shared/lib/uuid";
 import { Text, Notification, Button } from "@/shared/ui";
@@ -36,6 +36,10 @@ export function PostDetails() {
     return (
         <section class="post-details">
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
+            <AppLink className='post_card_author' href={`profile/${post.value.author_username}`}>
+                <UserAvatar user={{ username: post.value.author_username, avatar_url: post.value.author_avatar }} />
+                <Text variant='ui'>Автор: {post.value.author_name ?? post.value.author_username}</Text>
+            </AppLink>
             <Markdown content={text} />
             {isAdmin.value && <Button variant="primary" onClick={() => location.route(`/posts/${postId}/edit`)}>Редактировать</Button>}
             <Heading level={2} variant="display">Комментарии</Heading>
