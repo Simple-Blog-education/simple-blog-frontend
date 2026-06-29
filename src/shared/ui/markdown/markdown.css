@@ -46,6 +46,10 @@
     margin: var(--space-m) 0px;
 }
 
+.markdown-body img {
+    max-width: 100%;
+}
+
 .copy-btn {
     border: 1px solid var(--color-accent);
     background: var(--color-bg);

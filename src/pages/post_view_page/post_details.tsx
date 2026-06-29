@@ -36,7 +36,7 @@ export function PostDetails() {
     return (
         <section class="post-details">
             <time dateTime={create_date?.toISOString()}>{dateString}</time>
-            <AppLink className='post_card_author' href={`profile/${post.value.author_username}`}>
+            <AppLink className='post_card_author' href={`/profile/${post.value.author_username}`}>
                 <UserAvatar user={{ username: post.value.author_username, avatar_url: post.value.author_avatar }} />
                 <Text variant='ui'>Автор: {post.value.author_name ?? post.value.author_username}</Text>
             </AppLink>
